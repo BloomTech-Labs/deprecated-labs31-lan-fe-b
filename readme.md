@@ -14,3 +14,5 @@ An app that allows Lambda School alums to connect and grow in their profession b
 ### Installation
 1. Once you have cloned the repository, download the dependencies with `npm install`.
 2. Start the server with `npm start`.
+
+
