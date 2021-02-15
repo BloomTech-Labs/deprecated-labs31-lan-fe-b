@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUser, logOut, setSearch, fetchSearch } from '../../actions';
 import HeaderContainer from './styles/headerStyle';
 import lambdaschool from '../../img/lambdaschool.png';
+import editRoles from '../admin/editRoles';
 
 const Header = props => {
     const [hamburgerMenu, setHamburgerMenu] = useState(false);
@@ -41,7 +42,7 @@ const Header = props => {
                 <input type='text' placeholder='Search for a question' value={props.search} onChange={onChange} />
                 <button type='submit'><i className='fas fa-search'></i></button>
             </form>
-
+            {/* Edit Roles Here */}
             <img className='profile-picture' src={props.user.profilePicture} alt='profile icon' onClick={() => setHamburgerMenu(!hamburgerMenu)} />
 
             {hamburgerMenu && <div className='dropdown'>
