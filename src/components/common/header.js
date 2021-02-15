@@ -7,6 +7,7 @@ import editRoles from '../admin/editRoles';
 
 const Header = props => {
     const [hamburgerMenu, setHamburgerMenu] = useState(false);
+    const [adminMenu, setAdminMenu] = useState(false);
 
     useEffect(() => {
         // The header is the perfect place for fetching the user object
@@ -43,6 +44,12 @@ const Header = props => {
                 <button type='submit'><i className='fas fa-search'></i></button>
             </form>
             {/* Edit Roles Here */}
+            <h3 onClick={() => setAdminMenu(!adminMenu)}>Admin Roles</h3> 
+            {adminMenu && <div className='dropdown'>
+                <p>Edit Users</p>
+                <p>Edit Rooms</p>
+                <p>Edit Roles</p>
+            </div>}
             <img className='profile-picture' src={props.user.profilePicture} alt='profile icon' onClick={() => setHamburgerMenu(!hamburgerMenu)} />
 
             {hamburgerMenu && <div className='dropdown'>
