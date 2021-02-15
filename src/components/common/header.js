@@ -43,8 +43,7 @@ const Header = props => {
                 <input type='text' placeholder='Search for a question' value={props.search} onChange={onChange} />
                 <button type='submit'><i className='fas fa-search'></i></button>
             </form>
-            {/* Edit Roles Here */}
-            <h3 onClick={() => setAdminMenu(!adminMenu)}>Admin Roles</h3> 
+            <h3 onClick={() => setAdminMenu(!adminMenu)}>Admin</h3>
             {adminMenu && <div className='dropdown'>
                 <p>Edit Users</p>
                 <p>Edit Rooms</p>
