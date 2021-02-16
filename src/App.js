@@ -13,11 +13,9 @@ import Settings from './components/user/settings';
 import FAQ from './components/common/faq';
 import Error from './components/authentication/error';
 import PageNotFound from './components/common/pageNotFound';
-<<<<<<< HEAD
+
 import EditRole from './components/admin/editRoles';
-=======
-import editRoles from './components/admin/editRoles';
->>>>>>> 2504448696f43ae85ea712be39cacea94210dc12
+
 
 const App = () => {
 	return (
@@ -33,11 +31,9 @@ const App = () => {
 			<PrivateRoute path='/settings' component={Settings} />
 			<PrivateRoute path='/faq' component={FAQ} />
 			<PrivateRoute path='/error' component={Error} />
-<<<<<<< HEAD
+
 			<Route path='/editRole' component={EditRole}/>
-=======
-			<PrivateRoute path='/edit/roles' component={editRoles} />
->>>>>>> 2504448696f43ae85ea712be39cacea94210dc12
+
 			<Route component={PageNotFound} />
 			
 		</Switch>
