@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { fetchUser, logOut, setSearch, fetchSearch } from '../../actions';
 import HeaderContainer from './styles/headerStyle';
 import lambdaschool from '../../img/lambdaschool.png';
-import editRoles from '../admin/editRoles';
 
 const Header = props => {
     const [hamburgerMenu, setHamburgerMenu] = useState(false);
@@ -47,7 +46,7 @@ const Header = props => {
             {adminMenu && <div className='dropdown'>
                 <p>Edit Users</p>
                 <p>Edit Rooms</p>
-                <p>Edit Roles</p>
+                <p onClick={()=>{props.history.push('/edit/roles')}}>Edit Roles</p>
             </div>}
             <img className='profile-picture' src={props.user.profilePicture} alt='profile icon' onClick={() => setHamburgerMenu(!hamburgerMenu)} />
 

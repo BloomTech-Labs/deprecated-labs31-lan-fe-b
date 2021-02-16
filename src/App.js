@@ -13,6 +13,7 @@ import Settings from './components/user/settings';
 import FAQ from './components/common/faq';
 import Error from './components/authentication/error';
 import PageNotFound from './components/common/pageNotFound';
+import editRoles from './components/admin/editRoles';
 
 const App = () => {
 	return (
@@ -28,6 +29,7 @@ const App = () => {
 			<PrivateRoute path='/settings' component={Settings} />
 			<PrivateRoute path='/faq' component={FAQ} />
 			<PrivateRoute path='/error' component={Error} />
+			<PrivateRoute path='/edit/roles' component={editRoles} />
 			<Route component={PageNotFound} />
 		</Switch>
 	);
