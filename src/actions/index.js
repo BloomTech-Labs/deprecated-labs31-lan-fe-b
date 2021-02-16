@@ -176,3 +176,11 @@ export const updateUserDisplayName = (userID, displayName) => dispatch => {
         .then(response => console.log(response.data))
         .catch(error => console.log(error));
 };
+
+// Role
+
+export const postRole = (role) => dispatch => {
+        axios.post(`${BACKEND_URL}/api/roles`, role)
+            .then(response => console.log(response.data))
+            .catch(error => console.log(error));
+};
