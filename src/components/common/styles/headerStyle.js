@@ -75,6 +75,9 @@ const HeaderContainer = styled.div`
             }
         }
     }
+    .admin {
+        cursor: pointer;
+    }
 
     .profile-picture {
         height: 32px;
@@ -89,7 +92,7 @@ const HeaderContainer = styled.div`
         }
     }
 
-     {
+    .dropdown {
         width: 200px;
         background: #2c2f33;
         border-radius: 3px;
@@ -142,7 +145,7 @@ const HeaderContainer = styled.div`
             }
         }
 
-         {
+        {
             right: 2.5%;
         }
     }
