@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateUserDisplayName } from '../../actions';
 import Header from '../common/header';
 
 const editRoles = props => {
@@ -14,8 +13,8 @@ const editRoles = props => {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        state
     };
 };
 
-export default connect(mapStateToProps, { updateUserDisplayName })(editRoles);
+export default connect(mapStateToProps, {})(editRoles);
