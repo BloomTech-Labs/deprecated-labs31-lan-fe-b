@@ -3,64 +3,115 @@ import { connect } from 'react-redux';
 import { fetchUser, logOut, setSearch, fetchSearch } from '../../actions';
 import HeaderContainer from './styles/headerStyle';
 import lambdaschool from '../../img/lambdaschool.png';
-import editRoles from '../admin/editRoles';
 
-const Header = props => {
-    const [hamburgerMenu, setHamburgerMenu] = useState(false);
+const Header = (props) => {
+  const [hamburgerMenu, setHamburgerMenu] = useState(false);
+  const [adminMenu, setAdminMenu] = useState(false);
 
-    useEffect(() => {
-        // The header is the perfect place for fetching the user object
-        // Will only fetch if there is currently no user object
-        // This should help with sorting out the whole user object flow
-        // redux-query
+  useEffect(() => {
+    // The header is the perfect place for fetching the user object
+    // Will only fetch if there is currently no user object
+    // This should help with sorting out the whole user object flow
+    // redux-query
 
-        // This isn't too effective, I don't think, will look into later
-        if (Object.keys(props.user).length === 0) {
-            props.fetchUser();
-        };
-    }, []);
+    // This isn't too effective, I don't think, will look into later
+    if (Object.keys(props.user).length === 0) {
+      props.fetchUser();
+    }
+  }, []);
 
-    const onChange = event => {
-        props.setSearch(event.target.value);
-    };
+  const onChange = (event) => {
+    props.setSearch(event.target.value);
+  };
 
-    const onSubmit = event => {
-        event.preventDefault();
-        props.fetchSearch(props.search);
-    };
+  const onSubmit = (event) => {
+    event.preventDefault();
+    props.fetchSearch(props.search);
+  };
 
-    return (
-        <HeaderContainer>
-            <div className='logo' onClick={() => {
-                setHamburgerMenu(false);
-                props.history.push('/');
-            }}>
-                <img src={lambdaschool} alt='Lambda School logo' />
-            </div>
+  return (
+    <HeaderContainer>
+      <div
+        className="logo"
+        onClick={() => {
+          setHamburgerMenu(false);
+          props.history.push('/');
+        }}
+      >
+        <img src={lambdaschool} alt="Lambda School logo" />
+      </div>
 
-            <form autoComplete='off' spellCheck='false' onSubmit={onSubmit}>
-                <input type='text' placeholder='Search for a question' value={props.search} onChange={onChange} />
-                <button type='submit'><i className='fas fa-search'></i></button>
-            </form>
-            {/* Edit Roles Here */}
-            <img className='profile-picture' src={props.user.profilePicture} alt='profile icon' onClick={() => setHamburgerMenu(!hamburgerMenu)} />
+      <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
+        <input
+          type="text"
+          placeholder="Search for a question"
+          value={props.search}
+          onChange={onChange}
+        />
+        <button type="submit">
+          <i className="fas fa-search"></i>
+        </button>
+      </form>
+      <h3 onClick={() => setAdminMenu(!adminMenu)}>Admin</h3>
+      {adminMenu && (
+        <div className="dropdown">
+          <p>Edit Users</p>
+          <p>Edit Rooms</p>
+          <p
+            onClick={() => {
+              props.history.push('/edit/roles');
+            }}
+          >
+            Edit Roles
+          </p>
+        </div>
+      )}
+      <img
+        className="profile-picture"
+        src={props.user.profilePicture}
+        alt="profile icon"
+        onClick={() => setHamburgerMenu(!hamburgerMenu)}
+      />
 
-            {hamburgerMenu && <div className='dropdown'>
-                <p onClick={() => props.history.push('/faq')}><i className='fas fa-question'></i>FAQ</p>
-                <a href='https://github.com/viewee/frontend/issues' target='_blank' rel='noreferrer noopener'><p><i className='fas fa-bug'></i>Report a Bug</p></a>
-                <p onClick={() => props.history.push(`/user/${props.user.id}`)}><i className='fas fa-user'></i>My Profile</p>
-                <p onClick={() => props.history.push('/settings')}><i className='fas fa-cog'></i>Settings</p>
-                <p onClick={() => props.logOut(props.history)}><i className='fas fa-sign-out-alt'></i>Log Out</p>
-            </div>}
-        </HeaderContainer>
-    );
+      {hamburgerMenu && (
+        <div className="dropdown">
+          <p onClick={() => props.history.push('/faq')}>
+            <i className="fas fa-question"></i>FAQ
+          </p>
+          <a
+            href="https://github.com/viewee/frontend/issues"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <p>
+              <i className="fas fa-bug"></i>Report a Bug
+            </p>
+          </a>
+          <p onClick={() => props.history.push(`/user/${props.user.id}`)}>
+            <i className="fas fa-user"></i>My Profile
+          </p>
+          <p onClick={() => props.history.push('/settings')}>
+            <i className="fas fa-cog"></i>Settings
+          </p>
+          <p onClick={() => props.logOut(props.history)}>
+            <i className="fas fa-sign-out-alt"></i>Log Out
+          </p>
+        </div>
+      )}
+    </HeaderContainer>
+  );
 };
 
-const mapStateToProps = state => {
-    return {
-        user: state.user,
-        search: state.search
-    };
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    search: state.search,
+  };
 };
 
-export default connect(mapStateToProps, { fetchUser, logOut, setSearch, fetchSearch })(Header);
+export default connect(mapStateToProps, {
+  fetchUser,
+  logOut,
+  setSearch,
+  fetchSearch,
+})(Header);
