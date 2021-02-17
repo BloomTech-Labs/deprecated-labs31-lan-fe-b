@@ -61,6 +61,7 @@ const roles_data = {
 
 const EditRoles = (props) => {
   const [tempRoles, setTempRoles] = useState(roles_data.roles); // for dev
+  const [toggleCreate, setToggleCreate] = useState(false);
   useEffect(() => {
     props.fetchRoles();
   }, []);
@@ -70,7 +71,10 @@ const EditRoles = (props) => {
       <EditRolesContainer>
         <Header history={props.history} />
         <h2>Manage User Roles Page</h2>
-        <CreateRole />
+        <div className="buttons">
+          <button className="create-role-button" onClick={() => setToggleCreate(!toggleCreate)}>Create Role + </button>
+        </div>
+        {toggleCreate ? <CreateRole /> : null}
         {props.roles.length > 0
           ? props.roles.map((item, index) => <Role key={index} role={item} />)
           : null}

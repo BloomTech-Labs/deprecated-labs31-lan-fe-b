@@ -229,7 +229,7 @@ export const putRole = (role, role_id) => (dispatch) => {
 
 export const fetchRoles = () => (dispatch) => {
   axios
-    .post(`${BACKEND_URL}/api/roles`)
+    .get(`${BACKEND_URL}/api/roles`)
     .then((response) => dispatch({ type: 'SET_ROLES', payload: response.data }))
     .catch((error) => console.log(error));
 };

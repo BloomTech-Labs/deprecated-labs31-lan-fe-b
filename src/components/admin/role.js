@@ -20,8 +20,14 @@ const Role = (props) => {
     name: '',
     server: '',
   });
-  const [editActive, setEditActive] = useState(false);
+  // const [editActive, setEditActive] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
+  useEffect(() => {
+    if(props.role.role_name === 'admin' || props.role.role_name === 'mod' || props.role.role_name === 'alumni') {
+      setIsDisabled(true);
+    }
+  })
 
   const onChange = (event) => {
     setInput({
@@ -69,23 +75,23 @@ const Role = (props) => {
     }
   };
 
-  const editOnClick = (event) => {
-    // event.preventDefault();
-    setEditActive(!editActive);
-  };
+  // const editOnClick = (event) => {
+  //   // event.preventDefault();
+  //   setEditActive(!editActive);
+  // };
 
   return (
     <>
       <div className="role">
         <h3>{props.role.role_name}</h3>
-        <button
+        {/* /* <button
           className="edit-active-button"
           type="button"
           onClick={editOnClick}
         >
           Edit
-        </button>
-        {editActive ? (
+        </button> */}
+    
           <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
             <label>Name</label>
             <input
@@ -94,6 +100,7 @@ const Role = (props) => {
               placeholder="Enter a role name"
               value={input.name}
               onChange={onChange}
+              disabled={isDisabled}
             />
             {error.name && <p className="error">{error.name}</p>}
             <div className="checkboxes">
@@ -104,6 +111,7 @@ const Role = (props) => {
                     type="checkbox"
                     checked={input.permissions.UU}
                     onChange={onCheck}
+                    disabled={isDisabled}
                   />
                   User Update
                 </label>
@@ -113,6 +121,7 @@ const Role = (props) => {
                     type="checkbox"
                     checked={input.permissions.UC}
                     onChange={onCheck}
+                    disabled={isDisabled}
                   />
                   User Create
                 </label>
@@ -122,6 +131,7 @@ const Role = (props) => {
                     type="checkbox"
                     checked={input.permissions.UD}
                     onChange={onCheck}
+                    disabled={isDisabled}
                   />
                   User Delete
                 </label>
@@ -131,6 +141,7 @@ const Role = (props) => {
                     type="checkbox"
                     checked={input.permissions.PCU}
                     onChange={onCheck}
+                    disabled={isDisabled}
                   />
                   Post/Comment Update
                 </label>
@@ -142,6 +153,7 @@ const Role = (props) => {
                     type="checkbox"
                     checked={input.permissions.PCD}
                     onChange={onCheck}
+                    disabled={isDisabled}
                   />
                   Post/Comment Delete
                 </label>
@@ -151,6 +163,7 @@ const Role = (props) => {
                     type="checkbox"
                     checked={input.permissions.RC}
                     onChange={onCheck}
+                    disabled={isDisabled}
                   />
                   Room Create
                 </label>
@@ -160,6 +173,7 @@ const Role = (props) => {
                     type="checkbox"
                     checked={input.permissions.RU}
                     onChange={onCheck}
+                    disabled={isDisabled}
                   />
                   Room Update
                 </label>
@@ -169,19 +183,19 @@ const Role = (props) => {
                     type="checkbox"
                     checked={input.permissions.RD}
                     onChange={onCheck}
+                    disabled={isDisabled}
                   />
                   Room Delete
                 </label>
               </div>
             </div>
             <div className="buttons">
-              <button type="submit">
+              <button type="submit" disabled={isDisabled}>
                 Submit<i className="fas fa-check"></i>
               </button>
             </div>
             {error.server && <p className="error">{error.server}</p>}
           </form>
-        ) : null}
         
       </div>
     </>
