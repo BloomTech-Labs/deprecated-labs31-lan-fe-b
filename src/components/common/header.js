@@ -52,11 +52,19 @@ const Header = (props) => {
           <i className="fas fa-search"></i>
         </button>
       </form>
-      <h3 className='admin' onClick={() => setAdminMenu(!adminMenu)}>Admin</h3>
+      <h3 className="admin" onClick={() => setAdminMenu(!adminMenu)}>
+        Admin
+      </h3>
       {adminMenu && (
         <div className="dropdown">
           <p>Edit Users</p>
-          <p>Edit Rooms</p>
+          <p
+            onClick={() => {
+              props.history.push('/edit/rooms');
+            }}
+          >
+            Edit Rooms
+          </p>
           <p
             onClick={() => {
               props.history.push('/edit/roles');
