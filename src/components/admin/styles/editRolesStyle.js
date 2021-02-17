@@ -68,6 +68,16 @@ const EditRolesContainer = styled.div`
                 }
             }
         }
+        
+        .checkboxes {
+          display: flex;
+
+            .check-col {
+              display: flex;
+              flex-direction: column;
+              margin-right: 2rem;
+            }
+        }
 
         .error {
             margin-top: 4px;
