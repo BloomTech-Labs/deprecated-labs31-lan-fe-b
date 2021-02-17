@@ -10,7 +10,8 @@ const initialState = {
     usersLikedPosts: [],
     usersLikedComments: [],
     individualPostIsFetching: false,
-    individualPostCommentsAreFetching: false
+    individualPostCommentsAreFetching: false,
+    roles: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -88,6 +89,12 @@ export const reducer = (state = initialState, action) => {
                 currentPostComments: action.payload,
                 individualPostCommentsAreFetching: false
             };
+
+        case 'SET_ROLES':
+            return {
+                ...state,
+                roles: action.payload
+            }
         
         default:
             return state;
