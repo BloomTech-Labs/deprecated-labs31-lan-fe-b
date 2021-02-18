@@ -10,9 +10,7 @@ const editRooms = (props) => {
       <h1>Edit Rooms</h1>
       <CreateRooms />
       {props.state.rooms.map((item) => (
-        <div>
-          <li>{item.room}</li>
-        </div>
+        <li key={item.id}>{item.r}</li>
       ))}
     </>
   );

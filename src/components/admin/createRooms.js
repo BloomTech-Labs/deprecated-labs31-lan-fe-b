@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 
 const CreateRooms = (props) => {
   const [inputValue, setInputValue] = useState('');
+
   const handleChanges = (e) => {
     setInputValue(e.target.value);
   };
+
   return (
     <>
       <h1>Create Room</h1>
