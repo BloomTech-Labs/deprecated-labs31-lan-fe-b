@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Header from '../common/header';
-import CreateRole from './createRole';
-import Role from './role.js';
-import { fetchRoles } from '../../actions';
 import EditUserContainer from './styles/editUserStyle';
 
 
@@ -25,4 +22,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchRoles })(EditUser);
+export default connect(mapStateToProps)(EditUser);
