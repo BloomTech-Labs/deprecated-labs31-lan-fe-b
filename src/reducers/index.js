@@ -11,7 +11,8 @@ const initialState = {
   usersLikedComments: [],
   individualPostIsFetching: false,
   individualPostCommentsAreFetching: false,
-  rooms: [{ room: 'Lambda Staff' }],
+  roles: [],
+  rooms: [{ r: 'Graduated Students' }],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -85,6 +86,12 @@ export const reducer = (state = initialState, action) => {
         ...state,
         currentPostComments: action.payload,
         individualPostCommentsAreFetching: false,
+      };
+
+    case 'SET_ROLES':
+      return {
+        ...state,
+        roles: action.payload,
       };
 
     default:
