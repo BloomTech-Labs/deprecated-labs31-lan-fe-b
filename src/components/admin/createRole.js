@@ -80,7 +80,7 @@ const CreateRole = (props) => {
 
   return (
     <>
-      <h2>Create a role</h2>
+      <h2>Create A Role</h2>
       <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
         <label>Name</label>
         <input
