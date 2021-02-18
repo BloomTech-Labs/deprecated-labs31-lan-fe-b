@@ -99,6 +99,7 @@ const CreateRole = (props) => {
                 type="checkbox"
                 checked={input.permissions.UU}
                 onChange={onCheck}
+                className='checkbox'
               />
               User Update
             </label>

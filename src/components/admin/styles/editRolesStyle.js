@@ -39,29 +39,29 @@ const EditRolesContainer = styled.div`
     }
   }
   .create-role-button {
-        padding: 10px 24px;
-        margin-bottom: 16px;
-        background-color: #2c2f33;
-        border: none;
-        border-radius: 3px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        font-family: 'Nunito', sans-serif;
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: #ffffff;
-        transition: 0.25s;
-        cursor: pointer;
-        /* float: right; */
+    padding: 10px 24px;
+    margin-bottom: 16px;
+    background-color: #2c2f33;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    transition: 0.25s;
+    cursor: pointer;
+    /* float: right; */
 
-        i {
-            margin-right: 4px;
-            font-size: 0.625rem;
-        }
-
-        :hover {
-            opacity: 0.5;
-        }
+    i {
+      margin-right: 4px;
+      font-size: 0.625rem;
     }
+
+    :hover {
+      opacity: 0.5;
+    }
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -122,6 +122,25 @@ const EditRolesContainer = styled.div`
 
     .checkboxes {
       display: flex;
+
+      /* .checkbox {
+        margin-right: .5rem;
+      } */
+      input[type='checkbox'] {
+        transform: scale(1);
+        margin-right: .3rem;
+        /* padding-top: 1rem; */
+        /* vertical-align: baseline; */
+        /* vertical-align: middle; */
+      }
+
+      label {
+        /* font-size: 1.1rem; */
+        /* vertical-align: baseline; */
+        
+        /* position: relative; */
+        /* top: 3px; */
+      }
 
       .check-col {
         display: flex;

@@ -24,10 +24,14 @@ const Role = (props) => {
   const [success, setSuccess] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   useEffect(() => {
-    if(props.role.role_name === 'admin' || props.role.role_name === 'mod' || props.role.role_name === 'alumni') {
+    if (
+      props.role.role_name === 'admin' ||
+      props.role.role_name === 'mod' ||
+      props.role.role_name === 'alumni'
+    ) {
       setIsDisabled(true);
     }
-  })
+  });
 
   const onChange = (event) => {
     setInput({
@@ -91,112 +95,112 @@ const Role = (props) => {
         >
           Edit
         </button> */}
-    
-          <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
-            <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter a role name"
-              value={input.name}
-              onChange={onChange}
-              disabled={isDisabled}
-            />
-            {error.name && <p className="error">{error.name}</p>}
-            <div className="checkboxes">
-              <div className="check-col">
-                <label>
-                  <input
-                    name="UU"
-                    type="checkbox"
-                    checked={input.permissions.UU}
-                    onChange={onCheck}
-                    disabled={isDisabled}
-                  />
-                  User Update
-                </label>
-                <label>
-                  <input
-                    name="UC"
-                    type="checkbox"
-                    checked={input.permissions.UC}
-                    onChange={onCheck}
-                    disabled={isDisabled}
-                  />
-                  User Create
-                </label>
-                <label>
-                  <input
-                    name="UD"
-                    type="checkbox"
-                    checked={input.permissions.UD}
-                    onChange={onCheck}
-                    disabled={isDisabled}
-                  />
-                  User Delete
-                </label>
-                <label>
-                  <input
-                    name="PCU"
-                    type="checkbox"
-                    checked={input.permissions.PCU}
-                    onChange={onCheck}
-                    disabled={isDisabled}
-                  />
-                  Post/Comment Update
-                </label>
-              </div>
-              <div className="check-col">
-                <label>
-                  <input
-                    name="PCD"
-                    type="checkbox"
-                    checked={input.permissions.PCD}
-                    onChange={onCheck}
-                    disabled={isDisabled}
-                  />
-                  Post/Comment Delete
-                </label>
-                <label>
-                  <input
-                    name="RC"
-                    type="checkbox"
-                    checked={input.permissions.RC}
-                    onChange={onCheck}
-                    disabled={isDisabled}
-                  />
-                  Room Create
-                </label>
-                <label>
-                  <input
-                    name="RU"
-                    type="checkbox"
-                    checked={input.permissions.RU}
-                    onChange={onCheck}
-                    disabled={isDisabled}
-                  />
-                  Room Update
-                </label>
-                <label>
-                  <input
-                    name="RD"
-                    type="checkbox"
-                    checked={input.permissions.RD}
-                    onChange={onCheck}
-                    disabled={isDisabled}
-                  />
-                  Room Delete
-                </label>
-              </div>
+
+        <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter a role name"
+            value={input.name}
+            onChange={onChange}
+            disabled={isDisabled}
+          />
+          {error.name && <p className="error">{error.name}</p>}
+          <div className="checkboxes">
+            <div className="check-col">
+              <label>
+                <input
+                  name="UU"
+                  type="checkbox"
+                  checked={input.permissions.UU}
+                  onChange={onCheck}
+                  disabled={isDisabled}
+                />
+                User Update
+              </label>
+
+              <label>
+                <input
+                  name="UC"
+                  type="checkbox"
+                  checked={input.permissions.UC}
+                  onChange={onCheck}
+                  disabled={isDisabled}
+                />
+                User Create
+              </label>
+              <label>
+                <input
+                  name="UD"
+                  type="checkbox"
+                  checked={input.permissions.UD}
+                  onChange={onCheck}
+                  disabled={isDisabled}
+                />
+                User Delete
+              </label>
+              <label>
+                <input
+                  name="PCU"
+                  type="checkbox"
+                  checked={input.permissions.PCU}
+                  onChange={onCheck}
+                  disabled={isDisabled}
+                />
+                Post/Comment Update
+              </label>
             </div>
-            <div className="buttons">
-              <button type="submit" disabled={isDisabled}>
-                Submit<i className="fas fa-check"></i>
-              </button>
+            <div className="check-col">
+              <label>
+                <input
+                  name="PCD"
+                  type="checkbox"
+                  checked={input.permissions.PCD}
+                  onChange={onCheck}
+                  disabled={isDisabled}
+                />
+                Post/Comment Delete
+              </label>
+              <label>
+                <input
+                  name="RC"
+                  type="checkbox"
+                  checked={input.permissions.RC}
+                  onChange={onCheck}
+                  disabled={isDisabled}
+                />
+                Room Create
+              </label>
+              <label>
+                <input
+                  name="RU"
+                  type="checkbox"
+                  checked={input.permissions.RU}
+                  onChange={onCheck}
+                  disabled={isDisabled}
+                />
+                Room Update
+              </label>
+              <label>
+                <input
+                  name="RD"
+                  type="checkbox"
+                  checked={input.permissions.RD}
+                  onChange={onCheck}
+                  disabled={isDisabled}
+                />
+                Room Delete
+              </label>
             </div>
-            {error.server && <p className="error">{error.server}</p>}
-          </form>
-        
+          </div>
+          <div className="buttons">
+            <button type="submit" disabled={isDisabled}>
+              Submit<i className="fas fa-check"></i>
+            </button>
+          </div>
+          {error.server && <p className="error">{error.server}</p>}
+        </form>
       </div>
     </>
   );
