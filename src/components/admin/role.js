@@ -105,98 +105,106 @@ const Role = (props) => {
             value={input.name}
             onChange={onChange}
             disabled={isDisabled}
+            className="role-name-input"
           />
           {error.name && <p className="error">{error.name}</p>}
           <div className="checkboxes">
             <div className="check-col">
-              <label>
+              <div className="checkbox-container">
                 <input
                   name="UU"
                   type="checkbox"
                   checked={input.permissions.UU}
                   onChange={onCheck}
                   disabled={isDisabled}
+                  id="UU"
                 />
-                User Update
-              </label>
-
-              <label>
+                <label htmlFor="UU">User Update</label>
+              </div>
+              <div className="checkbox-container">
                 <input
                   name="UC"
                   type="checkbox"
                   checked={input.permissions.UC}
                   onChange={onCheck}
                   disabled={isDisabled}
+                  id="UC"
                 />
-                User Create
-              </label>
-              <label>
+                <label htmlFor="UC">User Create</label>
+              </div>
+              <div className="checkbox-container">
                 <input
                   name="UD"
                   type="checkbox"
                   checked={input.permissions.UD}
                   onChange={onCheck}
                   disabled={isDisabled}
+                  id="UD"
                 />
-                User Delete
-              </label>
-              <label>
+                <label htmlFor="UD">User Delete</label>
+              </div>
+              <div className="checkbox-container">
                 <input
                   name="PCU"
                   type="checkbox"
                   checked={input.permissions.PCU}
                   onChange={onCheck}
                   disabled={isDisabled}
+                  id="PCU"
                 />
-                Post/Comment Update
-              </label>
+                <label htmlFor="PCU">Post/Comment Update</label>
+              </div>
             </div>
             <div className="check-col">
-              <label>
+              <div className="checkbox-container">
                 <input
                   name="PCD"
                   type="checkbox"
                   checked={input.permissions.PCD}
                   onChange={onCheck}
                   disabled={isDisabled}
+                  id="PCD"
                 />
-                Post/Comment Delete
-              </label>
-              <label>
+                <label htmlFor="PCD">Post/Comment Delete</label>
+              </div>
+              <div className="checkbox-container">
                 <input
                   name="RC"
                   type="checkbox"
                   checked={input.permissions.RC}
                   onChange={onCheck}
                   disabled={isDisabled}
+                  id="RC"
                 />
-                Room Create
-              </label>
-              <label>
+                <label htmlFor="RC">Room Create</label>
+              </div>
+              <div className="checkbox-container">
                 <input
                   name="RU"
                   type="checkbox"
                   checked={input.permissions.RU}
                   onChange={onCheck}
                   disabled={isDisabled}
+                  id="RU"
                 />
-                Room Update
-              </label>
-              <label>
+                <label htmlFor="RU">Room Update</label>
+              </div>
+              <div className="checkbox-container">
                 <input
                   name="RD"
                   type="checkbox"
                   checked={input.permissions.RD}
                   onChange={onCheck}
                   disabled={isDisabled}
+                  id="RD"
                 />
-                Room Delete
-              </label>
+                <label htmlFor="RD">Room Delete</label>
+              </div>
             </div>
           </div>
           <div className="buttons">
-            <button type="submit" disabled={isDisabled}>
-              Submit<i className="fas fa-check"></i>
+            <button type="submit" disabled={isDisabled} className="edit-role-submit">
+              Submit
             </button>
           </div>
           {error.server && <p className="error">{error.server}</p>}

@@ -68,11 +68,16 @@ const EditRoles = (props) => {
 
   return (
     <>
+      <Header history={props.history} />
       <EditRolesContainer>
-        <Header history={props.history} />
-        <h2>Manage User Roles Page</h2>
+        <h2>Manage User Roles</h2>
         <div className="buttons">
-          <button className="create-role-button" onClick={() => setToggleCreate(!toggleCreate)}>Create Role + </button>
+          <button
+            className="create-role-button"
+            onClick={() => setToggleCreate(!toggleCreate)}
+          >
+            Create Role +{' '}
+          </button>
         </div>
         {toggleCreate ? <CreateRole /> : null}
         {props.roles.length > 0

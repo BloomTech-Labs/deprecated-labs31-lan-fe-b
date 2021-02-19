@@ -80,7 +80,7 @@ const CreateRole = (props) => {
 
   return (
     <>
-      <h2>Create A Role</h2>
+      <h3>Create A Role</h3>
       <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
         <label>Name</label>
         <input
@@ -93,89 +93,89 @@ const CreateRole = (props) => {
         {error.name && <p className="error">{error.name}</p>}
         <div className="checkboxes">
           <div className="check-col">
-            <label>
+            <div className="checkbox-container">
               <input
                 name="UU"
                 type="checkbox"
                 checked={input.permissions.UU}
                 onChange={onCheck}
-                className='checkbox'
+                className="checkbox"
               />
-              User Update
-            </label>
-            <label>
+              <label>User Update</label>
+            </div>
+            <div className="checkbox-container">
               <input
                 name="UC"
                 type="checkbox"
                 checked={input.permissions.UC}
                 onChange={onCheck}
               />
-              User Create
-            </label>
-            <label>
+              <label>User Create</label>
+            </div>
+            <div className="checkbox-container">
               <input
                 name="UD"
                 type="checkbox"
                 checked={input.permissions.UD}
                 onChange={onCheck}
               />
-              User Delete
-            </label>
-            <label>
+              <label>User Delete</label>
+            </div>
+            <div className="checkbox-container">
               <input
                 name="PCU"
                 type="checkbox"
                 checked={input.permissions.PCU}
                 onChange={onCheck}
               />
-              Post/Comment Update
-            </label>
+              <label>Post/Comment Update</label>
+            </div>
           </div>
           <div className="check-col">
-            <label>
+            <div className="checkbox-container">
               <input
                 name="PCD"
                 type="checkbox"
                 checked={input.permissions.PCD}
                 onChange={onCheck}
               />
-              Post/Comment Delete
-            </label>
-            <label>
+              <label>Post/Comment Delete</label>
+            </div>
+            <div className="checkbox-container">
               <input
                 name="RC"
                 type="checkbox"
                 checked={input.permissions.RC}
                 onChange={onCheck}
               />
-              Room Create
-            </label>
-            <label>
+              <label>Room Create</label>
+            </div>
+            <div className="checkbox-container">
               <input
                 name="RU"
                 type="checkbox"
                 checked={input.permissions.RU}
                 onChange={onCheck}
               />
-              Room Update
-            </label>
-            <label>
+              <label>Room Update</label>
+            </div>
+            <div className="checkbox-container">
               <input
                 name="RD"
                 type="checkbox"
                 checked={input.permissions.RD}
                 onChange={onCheck}
               />
-              Room Delete
-            </label>
+              <label>Room Delete</label>
+            </div>
           </div>
         </div>
         <div className="buttons">
-          <button type="button" onClick={initializeInput}>
-            <i className="fas fa-times"></i>Reset
+          <button type="button" onClick={initializeInput} className="edit-role-submit">
+            Reset
           </button>
-          <button type="submit">
-            Submit<i className="fas fa-check"></i>
+          <button type="submit" className="edit-role-submit">
+            Submit
           </button>
         </div>
         {error.server && <p className="error">{error.server}</p>}

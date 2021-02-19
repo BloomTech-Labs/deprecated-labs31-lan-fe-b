@@ -16,6 +16,10 @@ const EditRolesContainer = styled.div`
     color: #ffffff;
   }
 
+  h3 {
+    font-size: 1.5rem;
+  }
+
   .edit-active-button {
     padding: 10px 24px;
     margin-left: 8px;
@@ -39,7 +43,7 @@ const EditRolesContainer = styled.div`
     }
   }
   .create-role-button {
-    padding: 10px 24px;
+    /* padding: 10px 24px;
     margin-bottom: 16px;
     background-color: #2c2f33;
     border: none;
@@ -51,11 +55,32 @@ const EditRolesContainer = styled.div`
     color: #ffffff;
     transition: 0.25s;
     cursor: pointer;
-    /* float: right; */
 
     i {
       margin-right: 4px;
       font-size: 0.625rem;
+    }
+
+    :hover {
+      opacity: 0.5;
+    } */
+    padding: 10px 24px;
+    /* margin-left: 8px; */
+    margin-top: 0.4rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #0084ff, #0099ff);
+    border: none;
+    border-radius: 3px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.25s;
+
+    i {
+      margin-right: 4px;
+      font-size: 0.75rem;
     }
 
     :hover {
@@ -66,80 +91,32 @@ const EditRolesContainer = styled.div`
     display: flex;
     flex-direction: column;
 
-    .category {
-      margin-bottom: 4px;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #ffffff;
+    .role-name-input {
+      /* width: 50%; */
     }
-
-    .categories {
-      button {
-        padding: 10px 24px;
-        margin-right: 8px;
-        border: 1px solid #0099ff;
-        border-radius: 3px;
-        font-family: 'Nunito', sans-serif;
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.25s;
-        outline: none;
-      }
-
-      button:nth-child(1) {
-        background: ${(props) =>
-          props.category === 'Behavioral' ? '#0099ff' : 'none'};
-        color: ${(props) =>
-          props.category === 'Behavioral' ? '#ffffff' : '#0099ff'};
-
-        :hover {
-          background-color: #0099ff;
-          color: #ffffff;
-        }
-
-        :active {
-          opacity: 0.5;
-        }
-      }
-
-      button:nth-child(2) {
-        background: ${(props) =>
-          props.category === 'Technical' ? '#0099ff' : 'none'};
-        color: ${(props) =>
-          props.category === 'Technical' ? '#ffffff' : '#0099ff'};
-
-        :hover {
-          background-color: #0099ff;
-          color: #ffffff;
-        }
-
-        :active {
-          opacity: 0.5;
-        }
-      }
-    }
-
     .checkboxes {
       display: flex;
 
-      /* .checkbox {
-        margin-right: .5rem;
-      } */
+      .checkbox-container {
+        margin-top: 1rem;
+      }
+
       input[type='checkbox'] {
-        transform: scale(1);
-        margin-right: .3rem;
-        /* padding-top: 1rem; */
+        /* transform: scale(1); */
+        margin-right: 0.4rem;
+        /* margin-top: 1rem; */
         /* vertical-align: baseline; */
         /* vertical-align: middle; */
+        border: 1px solid white;
       }
 
       label {
         /* font-size: 1.1rem; */
         /* vertical-align: baseline; */
-        
-        /* position: relative; */
-        /* top: 3px; */
+
+        position: relative;
+        top: -0.8px;
+        /* border: 1px solid white; */
       }
 
       .check-col {
@@ -196,39 +173,35 @@ const EditRolesContainer = styled.div`
         color: dimgray;
       }
     }
-
     .buttons {
-      margin-top: 32px;
-      display: flex;
-      justify-content: flex-end;
-
-      button {
+      /* border: solid 1px white; */
+      .edit-role-submit {
         padding: 10px 24px;
-        margin-left: 8px;
-        background: linear-gradient(to right, #0084ff, #0099ff);
+        margin-bottom: 16px;
+        background-color: #2c2f33;
         border: none;
         border-radius: 3px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
         font-family: 'Nunito', sans-serif;
         font-size: 0.875rem;
         font-weight: 600;
         color: #ffffff;
-        cursor: pointer;
         transition: 0.25s;
+        cursor: pointer;
+        float:right;
 
         i {
           margin-right: 4px;
-          font-size: 0.75rem;
+          font-size: 0.625rem;
+        }
+
+        :disabled {
+          color: gray;
         }
 
         :hover {
           opacity: 0.5;
-        }
-      }
-
-      button:last-of-type {
-        i {
-          margin-right: 0px;
-          margin-left: 4px;
         }
       }
     }
