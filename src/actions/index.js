@@ -234,7 +234,7 @@ export const fetchRoles = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-export const addRoom = (room, description) => {
+export const addRoom = (room, description) => (dispatch) => {
   console.log('action', room, description);
   return axios.post(`${BACKEND_URL}/api/edit/rooms`);
 };
