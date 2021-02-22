@@ -22,6 +22,7 @@ const RoomsContainer = styled.div`
 
       .display-name {
         margin-right: 8px;
+        padding-bottom: 18px;
         font-size: 0.875rem;
         font-weight: 500;
         color: #ffffff;
@@ -36,29 +37,18 @@ const RoomsContainer = styled.div`
         font-size: 0.625rem;
         font-weight: 500;
         color: #ffffff;
+        padding-bottom: 16px;
       }
     }
 
     .labels {
       margin-bottom: 4px;
       display: flex;
-
-      button {
-        padding: 1px 2px;
-        margin-right: 4px;
-        background: linear-gradient(to right, #0084ff, #0099ff);
-        border: none;
-        border-radius: 3px;
-        font-family: 'Nunito', sans-serif;
-        font-size: 0.625rem;
-        font-weight: 700;
-        color: #ffffff;
-        cursor: pointer;
-      }
     }
 
     .description {
       margin-bottom: 4px;
+      padding-bottom: 10px;
       font-size: 1rem;
       font-weight: 600;
       color: #ffffff;
@@ -66,6 +56,25 @@ const RoomsContainer = styled.div`
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      width: 75%;
+    }
+    button {
+      padding: 10px 24px;
+      margin-top: 16px;
+      margin-left: 5px;
+      background: linear-gradient(to right, #0084ff, #0099ff);
+      border: none;
+      border-radius: 3px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      transition: 0.25s;
+
+      :hover {
+        opacity: 0.5;
+      }
     }
   }
 `;
@@ -109,6 +118,8 @@ const editRooms = (props) => {
                 <p className="timestamp">{item.timestamp}</p>
               </div>
               <p className="description">{item.description}</p>
+              <button>Edit</button>
+              <button>Delete</button>
             </div>
           </div>
         </RoomsContainer>
