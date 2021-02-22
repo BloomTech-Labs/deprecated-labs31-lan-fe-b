@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../common/header';
 import EditUserContainer from './styles/editUserStyle';
 
+
 const roles = [
     {
       "role_name": "admin",
@@ -43,6 +44,7 @@ const roles = [
   ];
 
 const EditUser = (props) => {
+ 
 
   return (
     <>
