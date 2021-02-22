@@ -84,9 +84,9 @@ const EditRoles = (props) => {
           ? props.roles.map((item, index) => <Role key={index} role={item} />)
           : null}
         {/* following for dev */}
-        {tempRoles.length > 0
+        {/* {tempRoles.length > 0
           ? tempRoles.map((item, index) => <Role key={index} role={item} />)
-          : null}
+          : null} */}
       </EditRolesContainer>
     </>
   );
