@@ -233,3 +233,8 @@ export const fetchRoles = () => (dispatch) => {
     .then((response) => dispatch({ type: 'SET_ROLES', payload: response.data }))
     .catch((error) => console.log(error));
 };
+
+export const addRoom = (room, description) => {
+  console.log('action', room, description);
+  return axios.put(`${BACKEND_URL}/api/edit/rooms`);
+};
