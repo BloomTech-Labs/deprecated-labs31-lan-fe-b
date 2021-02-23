@@ -14,25 +14,28 @@ import FAQ from './components/common/faq';
 import Error from './components/authentication/error';
 import PageNotFound from './components/common/pageNotFound';
 import editRoles from './components/admin/editRoles';
-import editUser from './components/admin/editUser';
+import editRooms from './components/admin/editRooms';
+import editUsers from './components/admin/editUsers';
+
 const App = () => {
-	return (
-		<Switch>
-			<PrivateRoute exact path='/' component={Dashboard} />
-			<Route path='/welcome' component={Landing} />
-			<Route path='/success' component={Success} />
-			<PrivateRoute exact path='/onboarding' component={Onboarding} />
-			<PrivateRoute path='/onboarding/careercoach' component={CareerCoach} />
-			<PrivateRoute exact path='/post' component={CreatePost} />
-			<PrivateRoute path='/post/:id' component={Post} />
-			<PrivateRoute path='/user/:id' component={User} />
-			<PrivateRoute path='/settings' component={Settings} />
-			<PrivateRoute path='/faq' component={FAQ} />
-			<PrivateRoute path='/error' component={Error} />
-			<PrivateRoute path='/edit/roles' component={editRoles} />
-			<PrivateRoute path='/edit/user' component={editUser}/>
-			<Route component={PageNotFound} />
-		</Switch>
-	);
+  return (
+    <Switch>
+      <PrivateRoute exact path="/" component={Dashboard} />
+      <Route path="/welcome" component={Landing} />
+      <Route path="/success" component={Success} />
+      <PrivateRoute exact path="/onboarding" component={Onboarding} />
+      <PrivateRoute path="/onboarding/careercoach" component={CareerCoach} />
+      <PrivateRoute exact path="/post" component={CreatePost} />
+      <PrivateRoute path="/post/:id" component={Post} />
+      <PrivateRoute path="/user/:id" component={User} />
+      <PrivateRoute path="/settings" component={Settings} />
+      <PrivateRoute path="/faq" component={FAQ} />
+      <PrivateRoute path="/error" component={Error} />
+      <PrivateRoute path="/edit/roles" component={editRoles} />
+      <PrivateRoute path="/edit/rooms" component={editRooms} />
+      <PrivateRoute path= "/edit/users" component={editUsers}/>
+      <Route component={PageNotFound} />
+    </Switch>
+  );
 };
 export default App;

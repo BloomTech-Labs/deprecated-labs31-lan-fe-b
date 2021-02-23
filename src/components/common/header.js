@@ -57,12 +57,26 @@ const Header = (props) => {
       </h3>
       {adminMenu && (
         <div className="dropdown">
+<<<<<<< HEAD
           <p
             onClick={() => {
               props.history.push('/edit/user');
             }}
           >Edit Users</p>
           <p>Edit Rooms</p>
+=======
+          <p onClick={()=>{
+            props.history.push('/edit/users')
+          }}>
+            Edit Users</p>
+          <p
+            onClick={() => {
+              props.history.push('/edit/rooms');
+            }}
+          >
+            Edit Rooms
+          </p>
+>>>>>>> c48f458a0a28d40756ca035fd4b95e2eff759317
           <p
             onClick={() => {
               props.history.push('/edit/roles');
