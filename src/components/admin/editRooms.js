@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Header from '../common/header';
 import CreateRooms from './createRooms';
@@ -77,6 +77,45 @@ const RoomsContainer = styled.div`
       }
     }
   }
+  label {
+    display: flex;
+    flex-direction: column;
+    /* margin: 16px auto 4px; */
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    width: 52%;
+  }
+
+  input {
+    padding: 10px;
+    background-color: #313536;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+
+    ::placeholder {
+      color: dimgray;
+    }
+  }
+  textarea {
+    min-height: 44px;
+    width: 373px;
+    min-width: 373px;
+    max-width: 373px;
+    height: 140px;
+    padding: 10px;
+    background-color: #313536;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+  }
 `;
 
 const roles_data = [
@@ -103,7 +142,8 @@ const roles_data = [
   },
 ];
 
-const editRooms = (props) => {
+const EditRooms = (props) => {
+  const [updateForm, setUpdateForm] = useState(false);
   return (
     <>
       <Header history={props.history} />
@@ -117,7 +157,26 @@ const editRooms = (props) => {
                 <p className="timestamp">{item.timestamp}</p>
               </div>
               <p className="description">{item.description}</p>
-              <button>Edit</button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setUpdateForm(!updateForm);
+                }}
+              >
+                Edit
+              </button>
+              {updateForm && (
+                <form>
+                  <label>
+                    Update Room
+                    <input value={item.room} />
+                  </label>
+                  <label>
+                    Update Description
+                    <textarea value={item.description} />
+                  </label>
+                </form>
+              )}
               <button>Delete</button>
             </div>
           </div>
@@ -133,4 +192,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(editRooms);
+export default connect(mapStateToProps, {})(EditRooms);
