@@ -107,7 +107,6 @@ const editRooms = (props) => {
   return (
     <>
       <Header history={props.history} />
-      <h1>Edit Rooms</h1>
       <CreateRooms />
       {roles_data.map((item) => (
         <RoomsContainer key={item.id}>
