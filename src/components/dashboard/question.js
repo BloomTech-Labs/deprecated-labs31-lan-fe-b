@@ -31,62 +31,46 @@ const Question = (props) => {
     setNumberOfLikes(numberOfLikes - 1);
   };
 
-  return (
-    <QuestionContainer post={props.post}>
-      <Link to={`/post/${props.post.id}`}>
-        <div className="question-card">
-          <div className="left">
-            <Link to={`/user/${props.post.user_id}`}>
-              <img src={props.post.profile_picture} alt="profile icon" />
-            </Link>
-          </div>
-          <div className="right">
-            <div className="display-name-and-timestamp">
-              <Link to={`/user/${props.post.user_id}`}>
-                <p className="display-name">{props.post.display_name}</p>
-              </Link>
-              <p className="timestamp">
-                {moment(props.post.created_at).fromNow()}
-              </p>
-            </div>
-            <div className="labels">
-              {props.post.track === 'Career Coach' && (
-                <button className="career-coach">CAREER COACH</button>
-              )}
-              {props.post.track && props.post.track !== 'Career Coach' && (
-                <button>{props.post.track.toUpperCase()}</button>
-              )}
-              <button>{props.post.category.toUpperCase()}</button>
-            </div>
-            <p className="question">{props.post.question}</p>
-            <p className="answer">{props.post.answer}</p>
-            <div className="activity">
-              <p>
-                <Link to="/">
-                  {liked ? (
-                    <i
-                      className="fas fa-thumbs-up"
-                      onClick={() => unlikeOnClick(props.post.id)}
-                    ></i>
-                  ) : (
-                    <i
-                      className="far fa-thumbs-up"
-                      onClick={() => likeOnClick(props.post.id)}
-                    ></i>
-                  )}
-                </Link>
-                {numberOfLikes}
-              </p>
-              <p>
-                <i className="far fa-comment"></i>
-                {props.post.comments}
-              </p>
-            </div>
-          </div>
-        </div>
-      </Link>
-    </QuestionContainer>
-  );
+    return (
+		<QuestionContainer post={props.post}>
+			<Link to={`/post/${props.post.id}`}>
+				<div className="question-card">
+					<div className='left'>
+						<Link to={`/user/${props.post.user_id}`}>
+							<img src={props.post.profile_picture} alt='profile icon' />
+						</Link>
+					</div>
+					<div className='right'>
+						<div className='display-name-and-timestamp'>
+							<Link to={`/user/${props.post.user_id}`}>
+								<p className='display-name'>{props.post.display_name}</p>
+							</Link>
+							<p className='timestamp'>{moment(props.post.created_at).fromNow()}</p>
+						</div>
+						<div className='labels'>
+							{props.post.track === 'Career Coach' && <button className='career-coach'>CAREER COACH</button>}
+							{props.post.track && props.post.track !== 'Career Coach' && <button>{props.post.track.toUpperCase()}</button>}
+							{/* <button>{props.post.category.toUpperCase()}</button> */}
+						</div>
+						<p className='question'>{props.post.question}</p>
+						<p className='answer'>{props.post.answer}</p>
+						<div className='activity'>
+							<p>
+								<Link to='/'>
+                                    {liked
+                                        ? <i className='fas fa-thumbs-up' onClick={() => unlikeOnClick(props.post.id)}></i>
+									    : <i className='far fa-thumbs-up' onClick={() => likeOnClick(props.post.id)}></i>
+									}
+								</Link>
+								{numberOfLikes}
+							</p>
+							<p><i className='far fa-comment'></i>{props.post.comments}</p>
+						</div>
+					</div>
+				</div>
+			</Link>
+		</QuestionContainer>
+	);
 };
 
 const mapStateToProps = (state) => {
