@@ -15,6 +15,7 @@ import Error from './components/authentication/error';
 import PageNotFound from './components/common/pageNotFound';
 import editRoles from './components/admin/editRoles';
 import editRooms from './components/admin/editRooms';
+import editUsers from './components/admin/editUsers';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
       <PrivateRoute path="/error" component={Error} />
       <PrivateRoute path="/edit/roles" component={editRoles} />
       <PrivateRoute path="/edit/rooms" component={editRooms} />
+      <PrivateRoute path= "/edit/users" component={editUsers}/>
       <Route component={PageNotFound} />
     </Switch>
   );
