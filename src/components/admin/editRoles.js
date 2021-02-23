@@ -62,9 +62,10 @@ const roles_data = {
 const EditRoles = (props) => {
   const [tempRoles, setTempRoles] = useState(roles_data.roles); // for dev
   const [toggleCreate, setToggleCreate] = useState(false);
+  const [successCount, setSuccessCount]= useState(0)
   useEffect(() => {
     props.fetchRoles();
-  }, []);
+  }, [successCount]);
 
   return (
     <>
@@ -79,10 +80,10 @@ const EditRoles = (props) => {
             Create Role +{' '}
           </button>
         </div>
-        {toggleCreate ? <CreateRole /> : null}
+        {toggleCreate ? <CreateRole setSuccessCount={setSuccessCount} successCount={successCount} /> : null}
         {props.roles.length > 0
-          ? props.roles.map((item, index) => <Role key={index} role={item} />)
-          : null}
+          ? props.roles.map((item, index) => <Role key={index} role={item} setSuccessCount={setSuccessCount} successCount={successCount} />)
+          : <p>No Roles Loaded</p>}
         {/* following for dev */}
         {/* {tempRoles.length > 0
           ? tempRoles.map((item, index) => <Role key={index} role={item} />)

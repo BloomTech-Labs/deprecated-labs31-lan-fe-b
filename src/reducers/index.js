@@ -93,7 +93,7 @@ export const reducer = (state = initialState, action) => {
         case 'SET_ROLES':
             return {
                 ...state,
-                roles: action.payload
+                roles: action.payload.roles
             }
         
         default:

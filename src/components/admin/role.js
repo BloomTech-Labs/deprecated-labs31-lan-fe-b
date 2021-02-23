@@ -16,6 +16,7 @@ const Role = (props) => {
       RD: props.role.RD,
     },
   });
+
   const [error, setError] = useState({
     name: '',
     server: '',
@@ -26,7 +27,7 @@ const Role = (props) => {
   useEffect(() => {
     if (
       props.role.role_name === 'admin' ||
-      props.role.role_name === 'mod' ||
+      props.role.role_name === 'moderator' ||
       props.role.role_name === 'alumni'
     ) {
       setIsDisabled(true);
@@ -64,16 +65,17 @@ const Role = (props) => {
         server: '',
       });
       props
-        .putRole(input)
+        .putRole(input, props.role.id)
         .then((response) => {
           console.log(response);
+          // props.setSuccessCount(props.successCount + 1)
           setSuccess(true);
         })
         .catch((error) => {
           console.log(error);
           setError({
             name: '',
-            server: 'There was an error creating this role',
+            server: 'There was an error updating this role',
           });
         });
     }

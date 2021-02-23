@@ -18,6 +18,7 @@ const initRole = {
 
 const CreateRole = (props) => {
   const [input, setInput] = useState(initRole);
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState({
     name: '',
     server: '',
@@ -41,8 +42,7 @@ const CreateRole = (props) => {
     });
   };
 
-  const initializeInput = (event) => {
-    event.preventDefault();
+  const initializeInput = () => {
     setInput(initRole);
     setError({
       name: '',
@@ -67,6 +67,7 @@ const CreateRole = (props) => {
         .then((response) => {
           console.log(response);
           initializeInput();
+          props.setSuccessCount(props.successCount + 1)
         })
         .catch((error) => {
           console.log(error);
