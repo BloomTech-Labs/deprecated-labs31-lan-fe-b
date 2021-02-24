@@ -96,7 +96,7 @@ const EditRolesContainer = styled.div`
         /* vertical-align: baseline; */
 
         position: relative;
-        top: -0.8px;
+        top: -1px;
         /* border: 1px solid white; */
       }
 
