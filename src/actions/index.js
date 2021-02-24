@@ -211,13 +211,10 @@ export const updateUserDisplayName = (userID, displayName) => (dispatch) => {
 // Role
 
 export const postRole = (role) => (dispatch) => {
-  // console.log('postRole action');
   return axios.post(`${BACKEND_URL}/api/roles`, role);
 };
 
 export const putRole = (role, role_id) => (dispatch) => {
-  // console.log('putRole action');
-  // console.log(`role: ${role.name}, role_id: ${role_id}`)
   return axios.put(`${BACKEND_URL}/api/roles/${role_id}`, role);
 };
 
@@ -228,4 +225,6 @@ export const fetchRoles = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-
+export const deleteRole = (role_id) => (dispatch) => {
+  return axios.delete(`${BACKEND_URL}/api/roles/${role_id}`);
+}

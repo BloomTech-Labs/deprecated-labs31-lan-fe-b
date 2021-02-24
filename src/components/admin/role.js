@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { putRole } from '../../actions';
+import { putRole, deleteRole } from '../../actions';
 
 const Role = (props) => {
   const [input, setInput] = useState({
@@ -21,9 +21,12 @@ const Role = (props) => {
     name: '',
     server: '',
   });
+  const [successMessage, setSucceessMessage] = useState('');
   // const [editActive, setEditActive] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [editSuccess, setEditSuccess] = useState(false);
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
+
   useEffect(() => {
     if (
       props.role.role_name === 'admin' ||
@@ -59,6 +62,7 @@ const Role = (props) => {
         name: 'Please enter a role name',
         server: '',
       });
+      setSucceessMessage('');
     } else {
       setError({
         name: '',
@@ -69,7 +73,10 @@ const Role = (props) => {
         .then((response) => {
           console.log(response);
           // props.setSuccessCount(props.successCount + 1)
-          setSuccess(true);
+          setEditSuccess(true);
+          setSucceessMessage(
+            `Role "${props.role.role_name}" has been successfully updated.`
+          );
         })
         .catch((error) => {
           console.log(error);
@@ -79,6 +86,23 @@ const Role = (props) => {
           });
         });
     }
+  };
+
+  const onDelete = (event) => {
+    event.preventDefault();
+    props
+      .deleteRole(props.role.id)
+      .then((response) => {
+        console.log(response);
+        setDeleteSuccess(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError({
+          name: '',
+          server: 'There was an error deleting this role',
+        });
+      });
   };
 
   // const editOnClick = (event) => {
@@ -205,15 +229,32 @@ const Role = (props) => {
             </div>
           </div>
           <div className="buttons">
-            <button type="submit" disabled={isDisabled} className="edit-role-submit">
+            <button
+              type="submit"
+              disabled={isDisabled}
+              className={editSuccess ? 'edit-role success' : 'edit-role'}
+            >
               Submit
             </button>
+            <button
+              type="button"
+              disabled={isDisabled}
+              className="edit-role"
+              onClick={onDelete}
+            >
+              Delete
+            </button>
           </div>
-          {error.server && <p className="error">{error.server}</p>}
+          <div className="messages">
+            {error.server && <p className="error">{error.server}</p>}
+            {successMessage && (
+              <p className="success-message">{successMessage}</p>
+            )}
+          </div>
         </form>
       </div>
     </>
   );
 };
 
-export default connect(null, { putRole })(Role);
+export default connect(null, { putRole, deleteRole })(Role);

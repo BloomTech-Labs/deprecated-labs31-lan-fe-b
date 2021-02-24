@@ -43,29 +43,7 @@ const EditRolesContainer = styled.div`
     }
   }
   .create-role-button {
-    /* padding: 10px 24px;
-    margin-bottom: 16px;
-    background-color: #2c2f33;
-    border: none;
-    border-radius: 3px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #ffffff;
-    transition: 0.25s;
-    cursor: pointer;
-
-    i {
-      margin-right: 4px;
-      font-size: 0.625rem;
-    }
-
-    :hover {
-      opacity: 0.5;
-    } */
     padding: 10px 24px;
-    /* margin-left: 8px; */
     margin-top: 0.4rem;
     margin-bottom: 2rem;
     background: linear-gradient(to right, #0084ff, #0099ff);
@@ -84,8 +62,11 @@ const EditRolesContainer = styled.div`
     }
 
     :hover {
-      opacity: 0.5;
+      opacity: 0.7;
     }
+  }
+  .toggled {
+    opacity: 0.5;
   }
   form {
     display: flex;
@@ -133,6 +114,11 @@ const EditRolesContainer = styled.div`
       color: #ea4335;
     }
 
+    .success-message {
+      color: #14e069;
+      margin-bottom: 1rem;
+    }
+
     label {
       margin: 16px 0 4px;
       font-size: 1rem;
@@ -175,7 +161,7 @@ const EditRolesContainer = styled.div`
     }
     .buttons {
       /* border: solid 1px white; */
-      .edit-role-submit {
+      .edit-role {
         padding: 10px 24px;
         margin-bottom: 16px;
         background-color: #2c2f33;
@@ -190,6 +176,7 @@ const EditRolesContainer = styled.div`
         transition: 0.25s;
         cursor: pointer;
         float:right;
+        margin-left: 1rem;
 
         i {
           margin-right: 4px;
@@ -204,7 +191,17 @@ const EditRolesContainer = styled.div`
           opacity: 0.5;
         }
       }
+      .success {
+        background-color: #14e069;
+        color: #2c2f33;
+      }
     }
+  }
+
+  .create-role {
+    padding: 5% 0;
+    border-bottom: 1px solid #2C2F34;
+    margin-bottom: 2rem;
   }
 
   @media (min-width: 768px) {

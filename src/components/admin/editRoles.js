@@ -20,7 +20,7 @@ const EditRoles = (props) => {
         <h2>Manage User Roles</h2>
         <div className="buttons">
           <button
-            className="create-role-button"
+            className={toggleCreate ? 'create-role-button toggled' : 'create-role-button'}
             onClick={() => setToggleCreate(!toggleCreate)}
           >
             Create Role +{' '}
