@@ -1,9 +1,19 @@
+  
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Header from '../common/header';
-import {fetchRoles} from '../../actions'
-//implement getting users by id
+import CreateRole from './createRole';
+import Role from './role.js';
+import { fetchRoles } from '../../actions';
+import EditRolesContainer from './styles/editRolesStyle';
+
 const EditRoles = (props) => {
+  const [toggleCreate, setToggleCreate] = useState(false);
+  const [successCount, setSuccessCount]= useState(0)
+  useEffect(() => {
+    props.fetchRoles();
+  }, [successCount]);
+
   return (
     <>
       <Header history={props.history} />
@@ -18,9 +28,9 @@ const EditRoles = (props) => {
           </button>
         </div>
         {toggleCreate ? <CreateRole setSuccessCount={setSuccessCount} successCount={successCount} /> : null}
-        {props.roles.length > 0
+        {/* {props.roles.length > 0
           ? props.roles.map((item, index) => <Role key={index} role={item} setSuccessCount={setSuccessCount} successCount={successCount} />)
-          : <p>No Roles Loaded</p>}
+          : <p>No Roles Loaded</p>} */}
       </EditRolesContainer>
     </>
   );
