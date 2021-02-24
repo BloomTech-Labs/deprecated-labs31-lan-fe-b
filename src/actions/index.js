@@ -218,3 +218,11 @@ export const updateUserDisplayName = (userID, displayName) => (dispatch) => {
     .then((response) => console.log(response.data))
     .catch((error) => console.log(error));
 };
+
+
+export const fetchRoles = () => (dispatch) => {
+  axios
+    .get(`${BACKEND_URL}/api/roles`, {withCredentials: true})
+    .then((response) => dispatch({ type: 'SET_ROLES', payload: response.data }))
+    .catch((error) => console.log(error));
+};
