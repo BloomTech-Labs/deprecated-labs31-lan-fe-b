@@ -11,7 +11,24 @@ const RoomsContainer = styled.div`
     display: flex;
     width: 52%;
   }
+
+  .left {
+    height: 10px;
+    img {
+      margin-right: 12px;
+      height: 32px;
+      width: 32px;
+      /* border-radius: 50%; */
+      transition: 0.25s;
+
+      :hover {
+        opacity: 0.5;
+      }
+    }
+  }
   .right {
+    /* padding-left: 10px; */
+    padding-top: 5px;
     .display-name-and-timestamp {
       margin-bottom: 4px;
       display: flex;
@@ -121,6 +138,9 @@ export const Rooms = (props) => {
     <>
       <RoomsContainer>
         <div className="rooms-card">
+          <div className="left">
+            <img src={props.item.icon} />
+          </div>
           <div className="right">
             <div className="display-name-and-timestamp">
               <p className="display-name">{props.item.room}</p>

@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import Header from '../common/header';
 import CreateRooms from './createRooms';
 import { Rooms } from './Rooms';
+import img from '../../img/lambdaschool.png'
 
 const roles_data = [
   {
     id: 1,
+    icon: `${img}`,
     timestamp: '32 minutes ago',
     room: 'Previous students with jobs',
     description:
@@ -14,6 +16,7 @@ const roles_data = [
   },
   {
     id: 2,
+    icon: `${img}`,
     timestamp: '5 days ago',
     room: 'Lambda Employees',
     description:
@@ -21,6 +24,7 @@ const roles_data = [
   },
   {
     id: 3,
+    icon: `${img}`,
     timestamp: '6 days ago',
     room: 'On the job search',
     description:
