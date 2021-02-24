@@ -1,20 +1,6 @@
 const initialState = {
-<<<<<<< HEAD
-    user: {},
-    currentUser: {},
-    posts: [],
-    currentPost: {},
-    currentPostComments: [],
-    search: '',
-    sort: '',
-    filter: '',
-    usersLikedPosts: [],
-    usersLikedComments: [],
-    individualPostIsFetching: false,
-    individualPostCommentsAreFetching: false,
-    roles: []
-=======
   user: {},
+  users: [],
   currentUser: {},
   posts: [],
   currentPost: {},
@@ -27,7 +13,6 @@ const initialState = {
   individualPostIsFetching: false,
   individualPostCommentsAreFetching: false,
   rooms: [{ room: 'Lambda Staff' }],
->>>>>>> c48f458a0a28d40756ca035fd4b95e2eff759317
 };
 
 export const reducer = (state = initialState, action) => {
@@ -96,24 +81,6 @@ export const reducer = (state = initialState, action) => {
         individualPostCommentsAreFetching: true,
       };
 
-<<<<<<< HEAD
-        case 'SET_CURRENT_POST_COMMENTS':
-            return {
-                ...state,
-                currentPostComments: action.payload,
-                individualPostCommentsAreFetching: false
-            };
-
-        case 'SET_ROLES':
-            return {
-                ...state,
-                roles: action.payload.roles
-            }
-        
-        default:
-            return state;
-    };
-=======
     case 'SET_CURRENT_POST_COMMENTS':
       return {
         ...state,
@@ -121,8 +88,13 @@ export const reducer = (state = initialState, action) => {
         individualPostCommentsAreFetching: false,
       };
 
+      case 'SET_USERS':
+        return {
+          ...state,
+          users: action.payload.users,
+        };
+
     default:
       return state;
   }
->>>>>>> c48f458a0a28d40756ca035fd4b95e2eff759317
 };
