@@ -92,6 +92,11 @@ const CreateRole = (props) => {
     }
   };
 
+  const clearPostSuccess = () => {
+    setPostSuccess(false);
+    setSuccessMessage('');
+  }
+
   return (
     <div className="create-role">
       <h3>Create A Role</h3>
@@ -191,12 +196,21 @@ const CreateRole = (props) => {
           >
             Submit
           </button>
-          <button type="button" onClick={initializeAll} className='edit-role'>
+          <button type="button" onClick={initializeAll} className="edit-role">
             Reset
           </button>
         </div>
-        {error.server && <p className="error">{error.server}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>}
+        <div className="messages">
+          {error.server && <p className="error">{error.server}</p>}
+          {successMessage && (
+            <p className="success-message">{successMessage}</p>
+          )}
+          {postSuccess && (
+            <button className="ok-button" onClick={clearPostSuccess}>
+              OK
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );

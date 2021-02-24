@@ -94,7 +94,9 @@ const Role = (props) => {
       .deleteRole(props.role.id)
       .then((response) => {
         console.log(response);
-        setSucceessMessage(`Role "${props.role.role_name}" has been successfully deleted.`)
+        setSucceessMessage(
+          `Role "${props.role.role_name}" has been successfully deleted.`
+        );
         setDeleteSuccess(true);
       })
       .catch((error) => {
@@ -104,6 +106,17 @@ const Role = (props) => {
           server: 'There was an error deleting this role',
         });
       });
+  };
+
+  const clearEditSuccess = () => {
+    setEditSuccess(false);
+    setSucceessMessage('');
+  };
+
+  const clearDeleteSuccess = () => {
+    setDeleteSuccess(false);
+    setSucceessMessage('');
+    props.setSuccessCount(props.successCount + 1);
   };
 
   // const editOnClick = (event) => {
@@ -250,6 +263,16 @@ const Role = (props) => {
             {error.server && <p className="error">{error.server}</p>}
             {successMessage && (
               <p className="success-message">{successMessage}</p>
+            )}
+            {editSuccess && (
+              <button className="ok-button" onClick={clearEditSuccess}>
+                OK
+              </button>
+            )}
+            {deleteSuccess && (
+              <button className="ok-button" onClick={clearDeleteSuccess}>
+                OK
+              </button>
             )}
           </div>
         </form>

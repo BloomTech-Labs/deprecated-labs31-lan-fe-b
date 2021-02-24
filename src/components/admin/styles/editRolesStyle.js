@@ -175,7 +175,7 @@ const EditRolesContainer = styled.div`
         color: #ffffff;
         transition: 0.25s;
         cursor: pointer;
-        float:right;
+        float: right;
         margin-left: 1rem;
 
         i {
@@ -196,11 +196,27 @@ const EditRolesContainer = styled.div`
         color: #2c2f33;
       }
     }
+    .ok-button {
+      padding: 10px 24px;
+      margin-bottom: 16px;
+      background-color: #2c2f33;
+      border: none;
+      border-radius: 3px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #ffffff;
+      transition: 0.25s;
+      cursor: pointer;
+      margin-left: 9rem;
+    }
   }
 
   .create-role {
     padding: 5% 0;
-    border-bottom: 1px solid #2C2F34;
+    border-bottom: 1px solid #2c2f34;
     margin-bottom: 2rem;
   }
 
