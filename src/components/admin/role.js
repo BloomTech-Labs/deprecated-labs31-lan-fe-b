@@ -94,6 +94,7 @@ const Role = (props) => {
       .deleteRole(props.role.id)
       .then((response) => {
         console.log(response);
+        setSucceessMessage(`Role "${props.role.role_name}" has been successfully deleted.`)
         setDeleteSuccess(true);
       })
       .catch((error) => {
@@ -239,7 +240,7 @@ const Role = (props) => {
             <button
               type="button"
               disabled={isDisabled}
-              className="edit-role"
+              className={deleteSuccess ? 'edit-role success' : 'edit-role'}
               onClick={onDelete}
             >
               Delete
