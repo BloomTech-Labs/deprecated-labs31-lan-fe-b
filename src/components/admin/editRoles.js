@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Header from '../common/header';
+import {fetchRoles} from '../../actions'
 //implement getting users by id
-const editRoles = (props) => {
+const EditRoles = (props) => {
   return (
     <>
       <Header history={props.history} />
