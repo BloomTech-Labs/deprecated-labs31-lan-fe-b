@@ -8,7 +8,7 @@ import EditRolesContainer from './styles/editRolesStyle';
 
 const EditRoles = (props) => {
   const [toggleCreate, setToggleCreate] = useState(false);
-  const [successCount, setSuccessCount]= useState(0)
+  const [successCount, setSuccessCount] = useState(0);
   useEffect(() => {
     props.fetchRoles();
   }, [successCount]);
@@ -20,16 +20,34 @@ const EditRoles = (props) => {
         <h2>Manage User Roles</h2>
         <div className="buttons">
           <button
-            className={toggleCreate ? 'create-role-button toggled' : 'create-role-button'}
+            className={
+              toggleCreate ? 'create-role-button toggled' : 'create-role-button'
+            }
             onClick={() => setToggleCreate(!toggleCreate)}
           >
             Create Role +{' '}
           </button>
         </div>
-        {toggleCreate ? <CreateRole setSuccessCount={setSuccessCount} successCount={successCount} /> : null}
-        {props.roles.length > 0
-          ? props.roles.map((item, index) => <Role key={index} role={item} setSuccessCount={setSuccessCount} successCount={successCount} />)
-          : <p>No Roles Loaded</p>}
+        <div className="roles">
+          {toggleCreate ? (
+            <CreateRole
+              setSuccessCount={setSuccessCount}
+              successCount={successCount}
+            />
+          ) : null}
+          {props.roles.length > 0 ? (
+            props.roles.map((item, index) => (
+              <Role
+                key={index}
+                role={item}
+                setSuccessCount={setSuccessCount}
+                successCount={successCount}
+              />
+            ))
+          ) : (
+            <p>No Roles Loaded</p>
+          )}
+        </div>
       </EditRolesContainer>
     </>
   );

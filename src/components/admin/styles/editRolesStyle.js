@@ -5,7 +5,8 @@ const EditRolesContainer = styled.div`
   margin: 0 auto;
   margin-top: 32px;
   margin-bottom: 32px;
-  color: white;
+  /* padding-left: 10%; */
+  
 
   h2 {
     padding-bottom: 8px;
@@ -18,6 +19,21 @@ const EditRolesContainer = styled.div`
 
   h3 {
     font-size: 1.5rem;
+    color: #ffffff;
+  }
+
+  /* * {
+    border: 1px solid blue;
+  } */
+  .roles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .role-body {
+    display: flex;
+    margin-bottom: 3rem;
   }
 
   .edit-active-button {
@@ -71,9 +87,10 @@ const EditRolesContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
+    width: 600px;
 
     .role-name-input {
-      /* width: 50%; */
+      width: 92%;
     }
     .checkboxes {
       display: flex;
@@ -160,10 +177,15 @@ const EditRolesContainer = styled.div`
       }
     }
     .buttons {
-      /* border: solid 1px white; */
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-left: 1rem;
+
       .edit-role {
         padding: 10px 24px;
-        margin-bottom: 16px;
+        margin-top: 2rem;
         background-color: #2c2f33;
         border: none;
         border-radius: 3px;

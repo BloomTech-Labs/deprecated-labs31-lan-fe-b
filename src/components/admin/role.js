@@ -148,117 +148,120 @@ const Role = (props) => {
             className="role-name-input"
           />
           {error.name && <p className="error">{error.name}</p>}
-          <div className="checkboxes">
-            <div className="check-col">
-              <div className="checkbox-container">
-                <input
-                  name="UU"
-                  type="checkbox"
-                  checked={input.permissions.UU}
-                  onChange={onCheck}
-                  disabled={isDisabled}
-                  id="UU"
-                />
-                <label htmlFor="UU">User Update</label>
+          <div className="role-body">
+            <div className="checkboxes">
+              <div className="check-col">
+                <div className="checkbox-container">
+                  <input
+                    name="UU"
+                    type="checkbox"
+                    checked={input.permissions.UU}
+                    onChange={onCheck}
+                    disabled={isDisabled}
+                    id="UU"
+                  />
+                  <label htmlFor="UU">User Update</label>
+                </div>
+                <div className="checkbox-container">
+                  <input
+                    name="UC"
+                    type="checkbox"
+                    checked={input.permissions.UC}
+                    onChange={onCheck}
+                    disabled={isDisabled}
+                    id="UC"
+                  />
+                  <label htmlFor="UC">User Create</label>
+                </div>
+                <div className="checkbox-container">
+                  <input
+                    name="UD"
+                    type="checkbox"
+                    checked={input.permissions.UD}
+                    onChange={onCheck}
+                    disabled={isDisabled}
+                    id="UD"
+                  />
+                  <label htmlFor="UD">User Delete</label>
+                </div>
+                <div className="checkbox-container">
+                  <input
+                    name="PCU"
+                    type="checkbox"
+                    checked={input.permissions.PCU}
+                    onChange={onCheck}
+                    disabled={isDisabled}
+                    id="PCU"
+                  />
+                  <label htmlFor="PCU">Post/Comment Update</label>
+                </div>
               </div>
-              <div className="checkbox-container">
-                <input
-                  name="UC"
-                  type="checkbox"
-                  checked={input.permissions.UC}
-                  onChange={onCheck}
-                  disabled={isDisabled}
-                  id="UC"
-                />
-                <label htmlFor="UC">User Create</label>
-              </div>
-              <div className="checkbox-container">
-                <input
-                  name="UD"
-                  type="checkbox"
-                  checked={input.permissions.UD}
-                  onChange={onCheck}
-                  disabled={isDisabled}
-                  id="UD"
-                />
-                <label htmlFor="UD">User Delete</label>
-              </div>
-              <div className="checkbox-container">
-                <input
-                  name="PCU"
-                  type="checkbox"
-                  checked={input.permissions.PCU}
-                  onChange={onCheck}
-                  disabled={isDisabled}
-                  id="PCU"
-                />
-                <label htmlFor="PCU">Post/Comment Update</label>
+              <div className="check-col">
+                <div className="checkbox-container">
+                  <input
+                    name="PCD"
+                    type="checkbox"
+                    checked={input.permissions.PCD}
+                    onChange={onCheck}
+                    disabled={isDisabled}
+                    id="PCD"
+                  />
+                  <label htmlFor="PCD">Post/Comment Delete</label>
+                </div>
+                <div className="checkbox-container">
+                  <input
+                    name="RC"
+                    type="checkbox"
+                    checked={input.permissions.RC}
+                    onChange={onCheck}
+                    disabled={isDisabled}
+                    id="RC"
+                  />
+                  <label htmlFor="RC">Room Create</label>
+                </div>
+                <div className="checkbox-container">
+                  <input
+                    name="RU"
+                    type="checkbox"
+                    checked={input.permissions.RU}
+                    onChange={onCheck}
+                    disabled={isDisabled}
+                    id="RU"
+                  />
+                  <label htmlFor="RU">Room Update</label>
+                </div>
+                <div className="checkbox-container">
+                  <input
+                    name="RD"
+                    type="checkbox"
+                    checked={input.permissions.RD}
+                    onChange={onCheck}
+                    disabled={isDisabled}
+                    id="RD"
+                  />
+                  <label htmlFor="RD">Room Delete</label>
+                </div>
               </div>
             </div>
-            <div className="check-col">
-              <div className="checkbox-container">
-                <input
-                  name="PCD"
-                  type="checkbox"
-                  checked={input.permissions.PCD}
-                  onChange={onCheck}
-                  disabled={isDisabled}
-                  id="PCD"
-                />
-                <label htmlFor="PCD">Post/Comment Delete</label>
-              </div>
-              <div className="checkbox-container">
-                <input
-                  name="RC"
-                  type="checkbox"
-                  checked={input.permissions.RC}
-                  onChange={onCheck}
-                  disabled={isDisabled}
-                  id="RC"
-                />
-                <label htmlFor="RC">Room Create</label>
-              </div>
-              <div className="checkbox-container">
-                <input
-                  name="RU"
-                  type="checkbox"
-                  checked={input.permissions.RU}
-                  onChange={onCheck}
-                  disabled={isDisabled}
-                  id="RU"
-                />
-                <label htmlFor="RU">Room Update</label>
-              </div>
-              <div className="checkbox-container">
-                <input
-                  name="RD"
-                  type="checkbox"
-                  checked={input.permissions.RD}
-                  onChange={onCheck}
-                  disabled={isDisabled}
-                  id="RD"
-                />
-                <label htmlFor="RD">Room Delete</label>
-              </div>
+            <div className="buttons">
+              <button
+                type="submit"
+                disabled={isDisabled}
+                className={editSuccess ? 'edit-role success' : 'edit-role'}
+              >
+                Submit
+              </button>
+              <button
+                type="button"
+                disabled={isDisabled}
+                className={deleteSuccess ? 'edit-role success' : 'edit-role'}
+                onClick={onDelete}
+              >
+                Delete
+              </button>
             </div>
           </div>
-          <div className="buttons">
-            <button
-              type="submit"
-              disabled={isDisabled}
-              className={editSuccess ? 'edit-role success' : 'edit-role'}
-            >
-              Submit
-            </button>
-            <button
-              type="button"
-              disabled={isDisabled}
-              className={deleteSuccess ? 'edit-role success' : 'edit-role'}
-              onClick={onDelete}
-            >
-              Delete
-            </button>
-          </div>
+
           <div className="messages">
             {error.server && <p className="error">{error.server}</p>}
             {successMessage && (
