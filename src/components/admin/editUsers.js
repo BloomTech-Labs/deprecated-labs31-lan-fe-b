@@ -16,7 +16,9 @@ const EditUsers = (props) => {
       <Header history={props.history} />
       <EditUserContainer>
         {props.users.map(user => {
-            return <h1>{user.email}</h1>
+            return(
+              <h1>{user.email}</h1>
+            )
         })}
       </EditUserContainer>
     </>
