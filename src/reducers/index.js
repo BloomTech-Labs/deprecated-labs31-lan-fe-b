@@ -13,6 +13,7 @@ const initialState = {
   individualPostIsFetching: false,
   individualPostCommentsAreFetching: false,
   rooms: [{ room: 'Lambda Staff' }],
+  roles:[]
 };
 
 export const reducer = (state = initialState, action) => {
@@ -93,6 +94,12 @@ export const reducer = (state = initialState, action) => {
           ...state,
           users: action.payload.users,
         };
+
+      case 'SET_ROLES':
+        return {
+          ...state,
+          roles: action.payload.roles
+      }
 
     default:
       return state;
