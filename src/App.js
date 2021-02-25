@@ -33,7 +33,7 @@ const App = () => {
       <PrivateRoute path="/error" component={Error} />
       <PrivateRoute path="/edit/roles" component={editRoles} />
       <PrivateRoute path="/edit/rooms" component={editRooms} />
-      <Route path= "/edit/users" component={editUsers}/>
+      <PrivateRoute path= "/edit/users" component={editUsers}/>
       <Route component={PageNotFound} />
     </Switch>
   );
