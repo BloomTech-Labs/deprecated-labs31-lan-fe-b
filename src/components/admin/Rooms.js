@@ -104,6 +104,7 @@ const RoomsContainer = styled.div`
     width: 373px;
     height: 50px;
     padding: 10px;
+    margin: 10px;
     background-color: #313536;
     border: none;
     border-radius: 3px;
@@ -165,9 +166,9 @@ export const Rooms = (props) => {
                   <textarea value={props.item.description} />
                 </label>
                 <button>Update</button>
+                <button>Delete</button>
               </form>
             )}
-            <button>Delete</button>
           </div>
         </div>
       </RoomsContainer>
