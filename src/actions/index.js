@@ -234,6 +234,18 @@ export const putRole = (role, role_id) => (dispatch) => {
 export const fetchRoles = () => (dispatch) => {
   axios
     .get(`${BACKEND_URL}/api/roles`, {withCredentials: true})
-    .then((response) => dispatch({ type: 'SET_ROLES', payload: response.data }))
+    .then((response) => {
+      console.log("FETCH ROLES: ", response.data)
+      dispatch({ type: 'SET_ROLES', payload: response.data });
+    })
     .catch((error) => console.log(error));
 };
+
+// export const fetchUsers = () => (dispatch) => {
+//   axios.get(`${BACKEND_URL}/api/user/all`)
+//     .then((response)=> {
+//       console.log("response: ", response.data)
+//       dispatch({ type: 'SET_USERS', payload: response.data });
+//     })
+//     .catch((error)=> console.log(error));
+// }
