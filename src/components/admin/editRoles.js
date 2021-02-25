@@ -28,9 +28,9 @@ const EditRoles = (props) => {
           </button>
         </div>
         {toggleCreate ? <CreateRole setSuccessCount={setSuccessCount} successCount={successCount} /> : null}
-        {/* {props.roles.length > 0
+        {props.roles.length > 0
           ? props.roles.map((item, index) => <Role key={index} role={item} setSuccessCount={setSuccessCount} successCount={successCount} />)
-          : <p>No Roles Loaded</p>} */}
+          : <p>No Roles Loaded</p>}
       </EditRolesContainer>
     </>
   );
