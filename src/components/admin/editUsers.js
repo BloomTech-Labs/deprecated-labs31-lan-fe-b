@@ -24,12 +24,16 @@ const EditUsers = (props) => {
               <h1>{user.email}</h1>
             )
         })}
-
-        {props.roles.map(role => {
-            return(
-              <h1>{role.role_name}</h1>
-            )
-        })}
+        <select>
+        {
+          props.roles.map(role => {
+              // <h1>{role.role_name}</h1>
+              return(
+                <option>{role.role_name}</option>
+              )
+          })
+        }
+        </select>
       </EditUserContainer>
     </>
   );
