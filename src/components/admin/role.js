@@ -16,7 +16,6 @@ const Role = (props) => {
       RD: props.role.RD,
     },
   });
-
   const [error, setError] = useState({
     name: '',
     server: '',
@@ -26,6 +25,7 @@ const Role = (props) => {
   const [editSuccess, setEditSuccess] = useState(false);
   const [deleteSuccess, setDeleteSuccess] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [editsPending, setEditsPending] = useState(false);
 
   useEffect(() => {
     if (
@@ -37,11 +37,34 @@ const Role = (props) => {
     }
   });
 
+  // clear error messages after 5 seconds
+  const timeoutError = () => {
+    setDeleteSuccess(false);
+    return setTimeout(() => {
+      setError({
+        name: '',
+        server: '',
+      });
+    }, 5000);
+  };
+
+  const timeoutSuccess = () => {
+    
+    return setTimeout(() => {
+      setSucceessMessage('');
+      setDeleteSuccess(false);
+      setEditSuccess(false);
+      setEditsPending(false);
+      props.setSuccessCount(props.successCount + 1);
+    }, 5000);
+  };
+
   const onChange = (event) => {
     setInput({
       ...input,
       [event.target.name]: event.target.value,
     });
+    setEditsPending(true);
   };
 
   const onCheck = (event) => {
@@ -53,6 +76,7 @@ const Role = (props) => {
         [event.target.name]: event.target.checked,
       },
     });
+    setEditsPending(true)
   };
 
   const onSubmit = (event) => {
@@ -63,6 +87,7 @@ const Role = (props) => {
         server: '',
       });
       setSucceessMessage('');
+      timeoutError();
     } else {
       setError({
         name: '',
@@ -77,6 +102,7 @@ const Role = (props) => {
           setSucceessMessage(
             `Role "${props.role.role_name}" has been successfully updated.`
           );
+          timeoutSuccess();
         })
         .catch((error) => {
           console.log(error);
@@ -84,6 +110,7 @@ const Role = (props) => {
             name: '',
             server: 'There was an error updating this role',
           });
+          timeoutError();
         });
     }
   };
@@ -98,6 +125,7 @@ const Role = (props) => {
           `Role "${props.role.role_name}" has been successfully deleted.`
         );
         setDeleteSuccess(true);
+        timeoutSuccess();
       })
       .catch((error) => {
         console.log(error);
@@ -108,16 +136,16 @@ const Role = (props) => {
       });
   };
 
-  const clearEditSuccess = () => {
-    setEditSuccess(false);
-    setSucceessMessage('');
-  };
+  // const clearEditSuccess = () => {
+  //   setEditSuccess(false);
+  //   setSucceessMessage('');
+  // };
 
-  const clearDeleteSuccess = () => {
-    setDeleteSuccess(false);
-    setSucceessMessage('');
-    props.setSuccessCount(props.successCount + 1);
-  };
+  // const clearDeleteSuccess = () => {
+  //   setDeleteSuccess(false);
+  //   setSucceessMessage('');
+  //   props.setSuccessCount(props.successCount + 1);
+  // };
 
   // const editOnClick = (event) => {
   //   // event.preventDefault();
@@ -244,13 +272,13 @@ const Role = (props) => {
               </div>
             </div>
             <div className="buttons">
-              <button
+              {editsPending && <button
                 type="submit"
                 disabled={isDisabled}
                 className={editSuccess ? 'edit-role success' : 'edit-role'}
-              >
-                Submit
-              </button>
+              > 
+                Save
+              </button>}
               <button
                 type="button"
                 disabled={isDisabled}
@@ -267,7 +295,7 @@ const Role = (props) => {
             {successMessage && (
               <p className="success-message">{successMessage}</p>
             )}
-            {editSuccess && (
+            {/* {editSuccess && (
               <button className="ok-button" onClick={clearEditSuccess}>
                 OK
               </button>
@@ -276,7 +304,7 @@ const Role = (props) => {
               <button className="ok-button" onClick={clearDeleteSuccess}>
                 OK
               </button>
-            )}
+            )} */}
           </div>
         </form>
       </div>

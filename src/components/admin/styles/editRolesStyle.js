@@ -6,7 +6,6 @@ const EditRolesContainer = styled.div`
   margin-top: 32px;
   margin-bottom: 32px;
   /* padding-left: 10%; */
-  
 
   h2 {
     padding-bottom: 8px;
@@ -129,11 +128,28 @@ const EditRolesContainer = styled.div`
       font-size: 0.875rem;
       font-weight: 600;
       color: #ea4335;
+      animation: fadeOut ease 5s;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
 
     .success-message {
       color: #14e069;
       margin-bottom: 1rem;
+      animation: fadeOut ease 5s;
     }
 
     label {
@@ -177,7 +193,6 @@ const EditRolesContainer = styled.div`
       }
     }
     .buttons {
-      
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
