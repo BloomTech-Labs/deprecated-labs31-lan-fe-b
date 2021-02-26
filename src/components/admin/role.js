@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { putRole, deleteRole } from '../../actions';
+import binLogo from '../../img/icon-bin1.png';
 
 const Role = (props) => {
   const [input, setInput] = useState({
@@ -39,7 +40,7 @@ const Role = (props) => {
 
   // clear error messages after 5 seconds
   const timeoutError = () => {
-    setDeleteSuccess(false);
+    // setDeleteSuccess(false);
     return setTimeout(() => {
       setError({
         name: '',
@@ -49,7 +50,6 @@ const Role = (props) => {
   };
 
   const timeoutSuccess = () => {
-    
     return setTimeout(() => {
       setSucceessMessage('');
       setDeleteSuccess(false);
@@ -76,7 +76,7 @@ const Role = (props) => {
         [event.target.name]: event.target.checked,
       },
     });
-    setEditsPending(true)
+    setEditsPending(true);
   };
 
   const onSubmit = (event) => {
@@ -155,17 +155,21 @@ const Role = (props) => {
   return (
     <>
       <div className="role">
-        <h3>{props.role.role_name}</h3>
-        {/* /* <button
-          className="edit-active-button"
-          type="button"
-          onClick={editOnClick}
-        >
-          Edit
-        </button> */}
-
         <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
-          <label>Name</label>
+          <div className="role-title-bar">
+            <h3 className={isDisabled && "disabled"}>{props.role.role_name}</h3>
+            <div className="buttons">
+              <img
+                className={isDisabled ? "bin-logo hide" : "bin-logo"}
+                src={binLogo}
+                // className={deleteSuccess ? 'edit-role success' : 'edit-role'}
+                onClick={onDelete}
+              />
+            </div>
+          </div>
+          <label htmlFor="name" className={isDisabled && 'disabled'}>
+            Name
+          </label>
           <input
             type="text"
             name="name"
@@ -174,6 +178,7 @@ const Role = (props) => {
             onChange={onChange}
             disabled={isDisabled}
             className="role-name-input"
+            id="name"
           />
           {error.name && <p className="error">{error.name}</p>}
           <div className="role-body">
@@ -272,21 +277,23 @@ const Role = (props) => {
               </div>
             </div>
             <div className="buttons">
-              {editsPending && <button
-                type="submit"
-                disabled={isDisabled}
-                className={editSuccess ? 'edit-role success' : 'edit-role'}
-              > 
-                Save
-              </button>}
-              <button
+              {editsPending && (
+                <button
+                  type="submit"
+                  disabled={isDisabled}
+                  className={editSuccess ? 'edit-role success' : 'edit-role'}
+                >
+                  Save
+                </button>
+              )}
+              {/* <button
                 type="button"
                 disabled={isDisabled}
                 className={deleteSuccess ? 'edit-role success' : 'edit-role'}
                 onClick={onDelete}
               >
                 Delete
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -295,16 +302,6 @@ const Role = (props) => {
             {successMessage && (
               <p className="success-message">{successMessage}</p>
             )}
-            {/* {editSuccess && (
-              <button className="ok-button" onClick={clearEditSuccess}>
-                OK
-              </button>
-            )}
-            {deleteSuccess && (
-              <button className="ok-button" onClick={clearDeleteSuccess}>
-                OK
-              </button>
-            )} */}
           </div>
         </form>
       </div>

@@ -30,6 +30,30 @@ const EditRolesContainer = styled.div`
     align-items: center;
   }
 
+  .role-title-bar {
+    display: flex;
+    width: 550px;
+    justify-content:space-between;
+
+    .disabled {
+      color: dimgray;
+    }
+
+    .bin-logo {
+        width: 20px;
+        filter: invert(100%);
+        cursor: pointer;
+        padding-bottom: 6px;
+
+        :hover {
+          opacity: 0.5;
+        }
+      }
+    .hide {
+      display: none;
+    }
+  }
+
   .role-body {
     display: flex;
     margin-bottom: 3rem;
@@ -108,12 +132,16 @@ const EditRolesContainer = styled.div`
       }
 
       label {
-        /* font-size: 1.1rem; */
-        /* vertical-align: baseline; */
-
         position: relative;
         top: -1px;
-        /* border: 1px solid white; */
+        
+        :disabled {
+          color: dimgray;
+        }
+      }
+
+      input:disabled+label {
+        color: dimgray;
       }
 
       .check-col {
@@ -152,12 +180,7 @@ const EditRolesContainer = styled.div`
       animation: fadeOut ease 5s;
     }
 
-    label {
-      margin: 16px 0 4px;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #ffffff;
-    }
+    
 
     input {
       padding: 10px;
@@ -169,9 +192,25 @@ const EditRolesContainer = styled.div`
       font-weight: 500;
       color: #ffffff;
 
+      :disabled {
+        color: dimgray;
+      }
+
       ::placeholder {
         color: dimgray;
       }
+    }
+
+    label {
+      margin: 16px 0 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ffffff;
+
+    }
+
+    label.disabled {
+      color:dimgray;
     }
 
     textarea {
