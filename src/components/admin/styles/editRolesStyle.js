@@ -33,13 +33,47 @@ const EditRolesContainer = styled.div`
   .role-title-bar {
     display: flex;
     width: 550px;
-    justify-content:space-between;
+    justify-content: space-between;
 
     .disabled {
       color: dimgray;
     }
 
-    .bin-logo {
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 120px;
+
+      .save-button {
+        padding: 10px 24px;
+        /* margin-top: 2rem; */
+        background-color: #2c2f33;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        font-family: 'Nunito', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #ffffff;
+        transition: 0.25s;
+        cursor: pointer;
+
+        i {
+          margin-right: 4px;
+          font-size: 0.625rem;
+        }
+
+        :disabled {
+          color: gray;
+        }
+
+        :hover {
+          opacity: 0.5;
+        }
+      }
+
+      .bin-logo {
         width: 20px;
         filter: invert(100%);
         cursor: pointer;
@@ -49,8 +83,9 @@ const EditRolesContainer = styled.div`
           opacity: 0.5;
         }
       }
-    .hide {
-      display: none;
+      .hide {
+        display: none;
+      }
     }
   }
 
@@ -134,13 +169,13 @@ const EditRolesContainer = styled.div`
       label {
         position: relative;
         top: -1px;
-        
+
         :disabled {
           color: dimgray;
         }
       }
 
-      input:disabled+label {
+      input:disabled + label {
         color: dimgray;
       }
 
@@ -180,8 +215,6 @@ const EditRolesContainer = styled.div`
       animation: fadeOut ease 5s;
     }
 
-    
-
     input {
       padding: 10px;
       background-color: #2c2f33;
@@ -206,11 +239,10 @@ const EditRolesContainer = styled.div`
       font-size: 1rem;
       font-weight: 500;
       color: #ffffff;
-
     }
 
     label.disabled {
-      color:dimgray;
+      color: dimgray;
     }
 
     textarea {
@@ -232,14 +264,14 @@ const EditRolesContainer = styled.div`
       }
     }
     .buttons {
-      display: flex;
+      /* display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      margin-left: 1rem;
+      margin-left: 1rem; */
 
       .edit-role {
         padding: 10px 24px;
-        margin-top: 2rem;
+        /* margin-top: 2rem; */
         background-color: #2c2f33;
         border: none;
         border-radius: 3px;
@@ -251,8 +283,6 @@ const EditRolesContainer = styled.div`
         color: #ffffff;
         transition: 0.25s;
         cursor: pointer;
-        float: right;
-        margin-left: 1rem;
 
         i {
           margin-right: 4px;

@@ -157,14 +157,38 @@ const Role = (props) => {
       <div className="role">
         <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
           <div className="role-title-bar">
-            <h3 className={isDisabled && "disabled"}>{props.role.role_name}</h3>
+            <h3 className={isDisabled && 'disabled'}>{props.role.role_name}</h3>
             <div className="buttons">
+              {/* {editsPending && (
+                <button
+                  type="submit"
+                  disabled={isDisabled}
+                  className={editSuccess ? 'edit-role success' : 'edit-role'}
+                >
+                  Save
+                </button>
+              )} */}
+              <button
+                type="submit"
+                disabled={isDisabled}
+                className={editSuccess ? 'save-button success' : 'save-button'}
+              >
+                Save
+              </button>
+              <button type="button" disabled={isDisabled} className={editSuccess ? 'save-button success' : 'save-button'}>
               <img
-                className={isDisabled ? "bin-logo hide" : "bin-logo"}
+                className={isDisabled ? 'bin-logo hide' : 'bin-logo'}
                 src={binLogo}
                 // className={deleteSuccess ? 'edit-role success' : 'edit-role'}
                 onClick={onDelete}
               />
+              </button>
+              {/* <img
+                className={isDisabled ? 'bin-logo hide' : 'bin-logo'}
+                src={binLogo}
+                // className={deleteSuccess ? 'edit-role success' : 'edit-role'}
+                onClick={onDelete}
+              /> */}
             </div>
           </div>
           <label htmlFor="name" className={isDisabled && 'disabled'}>
@@ -277,15 +301,6 @@ const Role = (props) => {
               </div>
             </div>
             <div className="buttons">
-              {editsPending && (
-                <button
-                  type="submit"
-                  disabled={isDisabled}
-                  className={editSuccess ? 'edit-role success' : 'edit-role'}
-                >
-                  Save
-                </button>
-              )}
               {/* <button
                 type="button"
                 disabled={isDisabled}
