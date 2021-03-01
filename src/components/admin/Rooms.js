@@ -144,8 +144,8 @@ export const Rooms = (props) => {
           </div>
           <div className="right">
             <div className="display-name-and-timestamp">
-              <p className="display-name">{props.item.room}</p>
-              <p className="timestamp">{props.item.timestamp}</p>
+              <p className="display-name">{props.item.name}</p>
+              {/* <p className="timestamp">{props.item.timestamp}</p> */}
             </div>
             <p className="description">{props.item.description}</p>
             <button
@@ -159,7 +159,7 @@ export const Rooms = (props) => {
               <form>
                 <label>
                   Update Room
-                  <input value={props.item.room} />
+                  <input value={props.item.name} />
                 </label>
                 <label>
                   Update Description

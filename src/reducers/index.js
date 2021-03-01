@@ -12,7 +12,7 @@ const initialState = {
   individualPostIsFetching: false,
   individualPostCommentsAreFetching: false,
   roles: [],
-  rooms: [{ id: 1, r: 'Graduated Students' }],
+  rooms: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -92,6 +92,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         roles: action.payload,
+      };
+
+    case 'SET_ROOM':
+      return {
+        ...state,
+        rooms: action.payload,
       };
 
     case 'ADD_ROOM':
