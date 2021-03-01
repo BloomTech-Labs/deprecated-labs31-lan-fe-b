@@ -4,6 +4,7 @@ import { addRoom } from '../../actions/index';
 import styled from 'styled-components';
 
 const Form = styled.form`
+  transition: 5s ease-in;
   .button {
     padding-left: 24%;
     padding-top: 2%;
@@ -167,62 +168,61 @@ const CreateRooms = (props) => {
 
   return (
     <>
-      <Form>
-        <div className="button">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setFormDropdown(!formDropdown);
-            }}
-          >
-            + Create a room
-          </button>
-        </div>
-        {formDropdown && (
-          <form autoComplete="off" className="form-dropdown">
-            <label className="label">
-              Add Room
-              <input
-                type="text"
-                name="name"
-                onChange={onChange}
-                value={input.name}
-              />
-              {error.name && <p className="error">{error.name}</p>}
-            </label>
-            <label className="label">
-              Icon
-              <input
-                type="text"
-                name="icon"
-                onChange={onChange}
-                value={input.icon}
-              />
-            </label>
-            <label className="label">
-              Banner
-              <input
-                type="text"
-                name="banner_image"
-                onChange={onChange}
-                value={input.banner_image}
-              />
-            </label>
-            <label className="room-description">
-              Description
-              <textarea
-                type="text"
-                name="description"
-                onChange={onChange}
-                value={input.description}
-              ></textarea>
-            </label>
-            <div className="submit-button">
-              <button onClick={onSubmit}>Submit</button>
-            </div>
-          </form>
-        )}
-      </Form>
+      {/* <Form> */}
+      <div className="button">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            setFormDropdown(!formDropdown);
+          }}
+        >
+          + Create a room
+        </button>
+      </div>
+      {formDropdown && (
+        <Form autoComplete="off" className="form-dropdown">
+          <label className="label">
+            Add Room
+            <input
+              type="text"
+              name="name"
+              onChange={onChange}
+              value={input.name}
+            />
+            {error.name && <p className="error">{error.name}</p>}
+          </label>
+          <label className="label">
+            Icon
+            <input
+              type="text"
+              name="icon"
+              onChange={onChange}
+              value={input.icon}
+            />
+          </label>
+          <label className="label">
+            Banner
+            <input
+              type="text"
+              name="banner_image"
+              onChange={onChange}
+              value={input.banner_image}
+            />
+          </label>
+          <label className="room-description">
+            Description
+            <textarea
+              type="text"
+              name="description"
+              onChange={onChange}
+              value={input.description}
+            />
+          </label>
+          <div className="submit-button">
+            <button onClick={onSubmit}>Submit</button>
+          </div>
+        </Form>
+      )}
     </>
   );
 };

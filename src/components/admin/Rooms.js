@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { fetchRooms, updateRoom } from '../../actions/index';
 
 const RoomsContainer = styled.div`
   .rooms-card {
@@ -135,6 +136,31 @@ const RoomsContainer = styled.div`
 `;
 export const Rooms = (props) => {
   const [updateForm, setUpdateForm] = useState(false);
+  const [input, setInput] = useState({
+    name: props.item.name,
+    icon: props.item.icon,
+    banner_image: props.item.banner_image,
+    description: props.item.description,
+  });
+
+  const onChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    props.update(
+      props.item.id,
+      input.name,
+      input.icon,
+      input.banner_image,
+      input.description
+    );
+  };
+
   return (
     <>
       <RoomsContainer>
@@ -159,13 +185,41 @@ export const Rooms = (props) => {
               <form>
                 <label>
                   Update Room
-                  <input value={props.item.name} />
+                  <input
+                    type="text"
+                    name="name"
+                    onChange={onChange}
+                    value={input.name}
+                  />
+                </label>
+                <label>
+                  Icon
+                  <input
+                    type="text"
+                    name="icon"
+                    onChange={onChange}
+                    value={input.icon}
+                  />
+                </label>
+                <label className="label">
+                  Banner
+                  <input
+                    type="text"
+                    name="banner_image"
+                    onChange={onChange}
+                    value={input.banner_image}
+                  />
                 </label>
                 <label>
                   Update Description
-                  <textarea value={props.item.description} />
+                  <textarea
+                    type="text"
+                    name="description"
+                    onChange={onChange}
+                    value={input.description}
+                  />
                 </label>
-                <button>Update</button>
+                <button onClick={onSubmit}>Update</button>
                 <button>Delete</button>
               </form>
             )}

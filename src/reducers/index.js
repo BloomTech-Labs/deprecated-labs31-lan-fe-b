@@ -102,7 +102,20 @@ export const reducer = (state = initialState, action) => {
 
     case 'ADD_ROOM':
       return {
-        state,
+        ...state,
+        rooms: [...state.rooms, action.payload],
+      };
+
+    case 'UPDATE_ROOM':
+      return {
+        ...state,
+        rooms: state.rooms.map((item) => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return item;
+          }
+        }),
       };
 
     default:
