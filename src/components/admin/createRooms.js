@@ -87,12 +87,16 @@ const Form = styled.form`
 const CreateRooms = (props) => {
   const [formDropdown, setFormDropdown] = useState(false);
   const [input, setInput] = useState({
-    role: '',
+    name: '',
+    icon: '',
+    banner_image: '',
     description: '',
   });
   const [error, setError] = useState({
     checkbox: '',
-    role: '',
+    name: '',
+    icon: '',
+    banner_image: '',
     description: '',
   });
 
@@ -108,22 +112,56 @@ const CreateRooms = (props) => {
     if (input.role === '') {
       setError({
         checkbox: 'Please input a role',
-        role: '',
+        name: '',
+        icon: '',
+        banner_image: '',
         description: '',
       });
     } else if (input.description === '') {
       setError({
         checkbox: 'Please input a description',
-        role: '',
+        name: '',
+        icon: '',
+        banner_image: '',
+        description: '',
+      });
+    } else if (input.icon === '') {
+      setError({
+        checkbox: 'Please input an icon',
+        name: '',
+        icon: '',
+        banner_image: '',
+        description: '',
+      });
+    } else if (input.banner_image === '') {
+      setError({
+        checkbox: 'Please input a banner image',
+        name: '',
+        icon: '',
+        banner_image: '',
         description: '',
       });
     } else {
       setError({
         checkbox: '',
-        role: '',
+        name: '',
+        icon: '',
+        banner_image: '',
         description: '',
       });
-      props.addRoom(input.role, input.description);
+      props.addRoom(
+        input.name,
+        input.icon,
+        input.banner_image,
+        input.description
+      );
+      setInput({
+        name: '',
+        icon: '',
+        banner_image: '',
+        description: '',
+      });
+      setFormDropdown(false);
     }
   };
 
@@ -146,11 +184,29 @@ const CreateRooms = (props) => {
               Add Room
               <input
                 type="text"
-                name="role"
+                name="name"
                 onChange={onChange}
                 value={input.name}
               />
               {error.name && <p className="error">{error.name}</p>}
+            </label>
+            <label className="label">
+              Icon
+              <input
+                type="text"
+                name="icon"
+                onChange={onChange}
+                value={input.icon}
+              />
+            </label>
+            <label className="label">
+              Banner
+              <input
+                type="text"
+                name="banner_image"
+                onChange={onChange}
+                value={input.banner_image}
+              />
             </label>
             <label className="room-description">
               Description

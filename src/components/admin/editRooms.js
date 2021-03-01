@@ -35,7 +35,7 @@ import { Rooms } from './Rooms';
 const EditRooms = (props) => {
   useEffect(() => {
     props.fetchRooms();
-  }, []);
+  }, [fetchRooms()]);
 
   return (
     <>

@@ -236,7 +236,7 @@ export const fetchRoles = () => (dispatch) => {
 
 export const fetchRooms = () => (dispatch) => {
   axios
-    .get('http://localhost:5000/api/room')
+    .get(`${BACKEND_URL}/api/room`)
     .then((response) => {
       dispatch({ type: 'SET_ROOM', payload: response.data.rooms });
       console.log('FETCH ROOMS ACTIONm', response.data.rooms);
@@ -244,7 +244,13 @@ export const fetchRooms = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-export const addRoom = (room, description) => (dispatch) => {
-  console.log('action', room, description);
-  return axios.post(`${BACKEND_URL}/api/edit/rooms`);
+export const addRoom = (name, icon, banner_image, description) => (
+  dispatch
+) => {
+  return axios.post(`${BACKEND_URL}/api/room`, {
+    name: name,
+    icon: icon,
+    banner_image: banner_image,
+    description: description,
+  });
 };
