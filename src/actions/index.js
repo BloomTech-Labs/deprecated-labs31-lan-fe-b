@@ -281,3 +281,15 @@ export const updateRoom = (id, name, icon, banner_image, description) => (
       console.log(error);
     });
 };
+
+export const deleteRoom = (id) => (dispatch) => {
+  return axios
+    .delete(`${BACKEND_URL}/api/room/${id}`)
+    .then((response) => {
+      console.log(response.data);
+      dispatch({ type: 'DELETE_ROOM', payload: id });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

@@ -4,7 +4,7 @@ import { fetchRooms } from '../../actions/index';
 import Header from '../common/header';
 import CreateRooms from './createRooms';
 import { Rooms } from './Rooms';
-import { updateRoom } from '../../actions/index';
+import { updateRoom, deleteRoom } from '../../actions/index';
 
 const EditRooms = (props) => {
   useEffect(() => {
@@ -15,7 +15,12 @@ const EditRooms = (props) => {
       <Header history={props.history} />
       <CreateRooms />
       {props.rooms.map((item) => (
-        <Rooms item={item} update={props.updateRoom} key={item.id} />
+        <Rooms
+          item={item}
+          update={props.updateRoom}
+          delete={props.deleteRoom}
+          key={item.id}
+        />
       ))}
     </>
   );
@@ -27,4 +32,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchRooms, updateRoom })(EditRooms);
+export default connect(mapStateToProps, { fetchRooms, updateRoom, deleteRoom })(
+  EditRooms
+);

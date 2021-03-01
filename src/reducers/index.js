@@ -118,6 +118,12 @@ export const reducer = (state = initialState, action) => {
         }),
       };
 
+    case 'DELETE_ROOM':
+      return {
+        ...state,
+        rooms: state.rooms.filter((item) => item.id != action.payload),
+      };
+
     default:
       return state;
   }

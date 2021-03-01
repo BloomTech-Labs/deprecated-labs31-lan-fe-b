@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { dispatch } from 'react-hot-toast';
 import styled from 'styled-components';
-import { fetchRooms, updateRoom } from '../../actions/index';
+import { deleteRoom } from '../../actions';
 
 const RoomsContainer = styled.div`
   .rooms-card {
@@ -161,6 +162,11 @@ export const Rooms = (props) => {
     );
   };
 
+  const deleteRoom = (e) => {
+    e.preventDefault();
+    props.delete(props.item.id);
+  };
+
   return (
     <>
       <RoomsContainer>
@@ -220,7 +226,7 @@ export const Rooms = (props) => {
                   />
                 </label>
                 <button onClick={onSubmit}>Update</button>
-                <button>Delete</button>
+                <button onClick={deleteRoom}>Delete</button>
               </form>
             )}
           </div>
