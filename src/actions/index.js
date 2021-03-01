@@ -218,3 +218,23 @@ export const updateUserDisplayName = (userID, displayName) => (dispatch) => {
     .then((response) => console.log(response.data))
     .catch((error) => console.log(error));
 };
+
+// Role
+
+export const postRole = (role) => (dispatch) => {
+  // console.log('postRole action');
+  return axios.post(`${BACKEND_URL}/api/roles`, role);
+};
+
+export const putRole = (role, role_id) => (dispatch) => {
+  // console.log('putRole action');
+  // console.log(`role: ${role.name}, role_id: ${role_id}`)
+  return axios.put(`${BACKEND_URL}/api/roles/${role_id}`, role);
+};
+
+export const fetchRoles = () => (dispatch) => {
+  axios
+    .get(`${BACKEND_URL}/api/roles`, {withCredentials: true})
+    .then((response) => dispatch({ type: 'SET_ROLES', payload: response.data }))
+    .catch((error) => console.log(error));
+};
