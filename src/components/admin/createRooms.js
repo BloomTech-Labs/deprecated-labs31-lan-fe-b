@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addRoom } from '../../actions/index';
 import styled from 'styled-components';
 
-const Form = styled.form`
+const Div = styled.div`
   transition: 5s ease-in;
   .button {
     padding-left: 24%;
@@ -167,8 +167,7 @@ const CreateRooms = (props) => {
   };
 
   return (
-    <>
-      {/* <Form> */}
+    <Div>
       <div className="button">
         <button
           onClick={(e) => {
@@ -180,7 +179,7 @@ const CreateRooms = (props) => {
         </button>
       </div>
       {formDropdown && (
-        <Form autoComplete="off" className="form-dropdown">
+        <form autoComplete="off" className="form-dropdown">
           <label className="label">
             Add Room
             <input
@@ -221,9 +220,9 @@ const CreateRooms = (props) => {
           <div className="submit-button">
             <button onClick={onSubmit}>Submit</button>
           </div>
-        </Form>
+        </form>
       )}
-    </>
+    </Div>
   );
 };
 
