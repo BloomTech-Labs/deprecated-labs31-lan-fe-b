@@ -70,7 +70,7 @@ const Header = (props) => {
               props.history.push('/edit/roles');
             }}
           >
-            Edit Roles
+            Edit Role
           </p>
         </div>
       )}
