@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { postQuestion } from '../../actions';
+import { postQuestion, fetchRooms } from '../../actions';
 import Header from '../common/header';
 import CreatePostContainer from './styles/createPostStyle';
 
 const CreatePost = (props) => {
+  useEffect(() => {
+    if(props.rooms.length == 0) {
+      props.fetchRooms();
+    }
+    if(props.currentRoom != '') {
+      setInput({ ...input, room_id: props.currentRoom.id })
+    }
+  }, [])
+
+  let roomOptions = props.rooms.map((room) => (
+    <option key={room.id} value={room.id}>{room.name}</option> 
+  ))
+
   const [category, setCategory] = useState('');
   const [input, setInput] = useState({
+    room_id: '',
     question: '',
     answer: '',
   });
@@ -25,13 +39,7 @@ const CreatePost = (props) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    if (category === '') {
-      setError({
-        checkbox: 'Please select a category',
-        question: '',
-        answer: '',
-      });
-    } else if (input.question === '') {
+    if (input.question === '') {
       setError({
         checkbox: '',
         question: 'Please enter a question',
@@ -49,13 +57,14 @@ const CreatePost = (props) => {
         question: '',
         answer: '',
       });
+      console.log(input);
       props
         .postQuestion(
           input.question,
           input.answer,
-          props.user.track,
-          category,
-          props.history
+          input.room_id
+          // props.user.track,
+          // props.history
         )
         .then((response) => {
           console.log(response);
@@ -76,9 +85,9 @@ const CreatePost = (props) => {
     <>
       <Header history={props.history} />
       <CreatePostContainer category={category}>
-        <h2>Post a question</h2>
+        <h2>Create a post</h2>
         <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
-          <p className="category">Category</p>
+          {/* <p className="category">Category</p>
           <div className="categories">
             <button type="button" onClick={() => setCategory('Behavioral')}>
               Behavioral
@@ -86,14 +95,22 @@ const CreatePost = (props) => {
             <button type="button" onClick={() => setCategory('Technical')}>
               Technical
             </button>
-          </div>
+          </div> */}
+          <label>Room</label>
+          <select
+            name="room_id"
+            value={input.room_id}
+            onChange={onChange}
+            >
+              {roomOptions}
+            </select>
           {error.checkbox && <p className="error">{error.checkbox}</p>}
 
-          <label>Question</label>
+          <label>Topic</label>
           <input
             type="text"
             name="question"
-            placeholder="Enter the question"
+            placeholder="Topic..."
             value={input.question}
             onChange={onChange}
           />
@@ -103,7 +120,7 @@ const CreatePost = (props) => {
           <textarea
             type="text"
             name="answer"
-            placeholder="Explain how you answered and any other thoughts"
+            placeholder="Body text..."
             value={input.answer}
             onChange={onChange}
           />
@@ -126,7 +143,9 @@ const CreatePost = (props) => {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    currentRoom: state.currentRoom,
+    rooms: state.rooms
   };
 };
 
-export default connect(mapStateToProps, { postQuestion })(CreatePost);
+export default connect(mapStateToProps, { postQuestion, fetchRooms })(CreatePost);

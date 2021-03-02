@@ -51,14 +51,13 @@ export const setTrack = (track, token) => (dispatch) => {
 };
 
 // Post
-export const postQuestion = (question, answer, track, category, history) => (
+export const postQuestion = (question, answer, room_id, history) => (
   dispatch
 ) => {
   return axios.post(`${BACKEND_URL}/api/post/create`, {
     question: question,
     answer: answer,
-    track: track,
-    category: category,
+    room_id: room_id
   });
 };
 
