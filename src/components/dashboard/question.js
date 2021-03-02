@@ -49,8 +49,8 @@ const Question = (props) => {
 						</div>
 						<div className='labels'>
 							{props.post.track === 'Career Coach' && <button className='career-coach'>CAREER COACH</button>}
-							{props.post.track && props.post.track !== 'Career Coach' && <button>{props.post.track.toUpperCase()}</button>}
-							{/* <button>{props.post.category.toUpperCase()}</button> */}
+							{props.post.track && props.post.track !== 'Career Coach' && <button>{props.post.track}</button>} removed props.post.track.toUpperCase() was having issues, will take a look later
+							<button>{props.post.category}</button>
 						</div>
 						<p className='question'>{props.post.question}</p>
 						<p className='answer'>{props.post.answer}</p>
