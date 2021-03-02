@@ -5,31 +5,31 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import QuestionContainer from './styles/questionStyle';
 
-const Question = props => {
-	const [liked, setLiked] = useState(false);
-	const [numberOfLikes, setNumberOfLikes] = useState(0)
+const Question = (props) => {
+  const [liked, setLiked] = useState(false);
+  const [numberOfLikes, setNumberOfLikes] = useState(0);
 
-	useEffect(() => {
-		if (props.usersLikedPosts.find(item => item.post_id === props.post.id)) {
-			setLiked(true);
-		} else {
-			setLiked(false);
-		};
-	}, [props.usersLikedPosts, props.posts]);
+  useEffect(() => {
+    if (props.usersLikedPosts.find((item) => item.post_id === props.post.id)) {
+      setLiked(true);
+    } else {
+      setLiked(false);
+    }
+  }, [props.usersLikedPosts, props.posts]);
 
-	useEffect(() => setNumberOfLikes(props.post.likes), []);
+  useEffect(() => setNumberOfLikes(props.post.likes), []);
 
-    const likeOnClick = postID => {
-		setLiked(true);
-        props.like(postID);
-		setNumberOfLikes(numberOfLikes + 1);
-    };
+  const likeOnClick = (postID) => {
+    setLiked(true);
+    props.like(postID);
+    setNumberOfLikes(numberOfLikes + 1);
+  };
 
-    const unlikeOnClick = postID => {
-		setLiked(false);
-        props.unlike(postID);
-		setNumberOfLikes(numberOfLikes - 1);
-    };
+  const unlikeOnClick = (postID) => {
+    setLiked(false);
+    props.unlike(postID);
+    setNumberOfLikes(numberOfLikes - 1);
+  };
 
     return (
 		<QuestionContainer post={props.post}>
@@ -49,7 +49,7 @@ const Question = props => {
 						</div>
 						<div className='labels'>
 							{props.post.track === 'Career Coach' && <button className='career-coach'>CAREER COACH</button>}
-							{props.post.track && props.post.track !== 'Career Coach' && <button>{props.post.track}</button>}
+							{props.post.track && props.post.track !== 'Career Coach' && <button>{props.post.track}</button>} removed props.post.track.toUpperCase() was having issues, will take a look later
 							<button>{props.post.category}</button>
 						</div>
 						<p className='question'>{props.post.question}</p>
@@ -73,11 +73,11 @@ const Question = props => {
 	);
 };
 
-const mapStateToProps = state => {
-	return {
-		usersLikedPosts: state.usersLikedPosts,
-		posts: state.posts
-	};
+const mapStateToProps = (state) => {
+  return {
+    usersLikedPosts: state.usersLikedPosts,
+    posts: state.posts,
+  };
 };
 
 export default connect(mapStateToProps, { like, unlike })(Question);
