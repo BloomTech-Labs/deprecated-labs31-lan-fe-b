@@ -88,6 +88,15 @@ export const fetchPopular = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
+export const fetchPopularByRoom = (room_id) => (dispatch) => {
+  axios
+    .post(`${BACKEND_URL}/api/post/search`, { room_id: room_id }, { params: {
+      orderBy: "popular"
+    }})
+    .then((response) => dispatch({ type: 'SET_POSTS', payload: response.data }))
+    .catch((error) => console.log(error));
+}
+
 export const fetchPost = (postID) => (dispatch) => {
   dispatch({ type: 'START_FETCHING_CURRENT_POST' });
   axios
@@ -228,4 +237,13 @@ export const fetchRoles = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
+
+// Rooms
+
+export const fetchRooms = () => (dispatch) => {
+  axios
+    .get(`${BACKEND_URL}/api/room`)
+    .then((response) => dispatch({ type: 'SET_ROOMS', payload: response.data }))
+    .catch((error) => console.log(error));
+};
 

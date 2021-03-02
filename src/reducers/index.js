@@ -1,17 +1,18 @@
 const initialState = {
-    user: {},
-    currentUser: {},
-    posts: [],
-    currentPost: {},
-    currentPostComments: [],
-    search: '',
-    sort: '',
-    filter: '',
-    usersLikedPosts: [],
-    usersLikedComments: [],
-    individualPostIsFetching: false,
-    individualPostCommentsAreFetching: false,
-    roles: []
+  user: {},
+  currentUser: {},
+  posts: [],
+  currentPost: {},
+  currentPostComments: [],
+  search: '',
+  sort: '',
+  filter: '',
+  usersLikedPosts: [],
+  usersLikedComments: [],
+  individualPostIsFetching: false,
+  individualPostCommentsAreFetching: false,
+  roles: [],
+  rooms: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -80,20 +81,24 @@ export const reducer = (state = initialState, action) => {
         individualPostCommentsAreFetching: true,
       };
 
-        case 'SET_CURRENT_POST_COMMENTS':
-            return {
-                ...state,
-                currentPostComments: action.payload,
-                individualPostCommentsAreFetching: false
-            };
+    case 'SET_CURRENT_POST_COMMENTS':
+      return {
+        ...state,
+        currentPostComments: action.payload,
+        individualPostCommentsAreFetching: false,
+      };
 
-        case 'SET_ROLES':
-            return {
-                ...state,
-                roles: action.payload.roles
-            }
-        
-        default:
-            return state;
-    };
+    case 'SET_ROLES':
+      return {
+        ...state,
+        roles: action.payload.roles,
+      };
+    case 'SET_ROOMS':
+      return {
+        ...state,
+        rooms: action.payload.rooms,
+      }
+    default:
+      return state;
+  }
 };
