@@ -247,3 +247,7 @@ export const fetchRooms = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
+// Current Room
+export const setCurrentRoom = (room) => (dispatch) => {
+  dispatch({ type: 'SET_CURRENT_ROOM', payload: room });
+}

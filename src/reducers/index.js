@@ -13,6 +13,7 @@ const initialState = {
   individualPostCommentsAreFetching: false,
   roles: [],
   rooms: [],
+  currentRoom: {}
 };
 
 export const reducer = (state = initialState, action) => {
@@ -97,6 +98,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         rooms: action.payload.rooms,
+      }
+    case 'SET_CURRENT_ROOM':
+      return {
+        ...state,
+        currentRoom: action.payload
       }
     default:
       return state;

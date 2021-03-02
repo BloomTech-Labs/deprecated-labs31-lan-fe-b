@@ -1,16 +1,26 @@
 import React, { useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom'
+import queryString from 'query-string';
 import { connect } from 'react-redux';
-import { fetchRecent, fetchUsersLikedPosts } from '../../actions';
+import { fetchRecent, fetchUsersLikedPosts, fetchPopularByRoom } from '../../actions';
 import Question from './question';
 import Rooms from './rooms';
 import QuestionsContainer from './styles/questionsStyle';
 
 const Questions = (props) => {
+  const { search } = useLocation();
+  const { room } = queryString.parse(search);
+
+  console.log(search);
   useEffect(() => {
-    // ? Default search query passed in
-    props.fetchRecent();
+    if(room) {
+      props.fetchPopularByRoom(room)
+    } else {
+      props.fetchRecent();
+    }
     props.fetchUsersLikedPosts();
-  }, []);
+    console.log(room);
+  }, [room]);
 
   return (
     <>
@@ -40,6 +50,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchRecent, fetchUsersLikedPosts })(
+export default connect(mapStateToProps, { fetchRecent, fetchUsersLikedPosts, fetchPopularByRoom })(
   Questions
 );
