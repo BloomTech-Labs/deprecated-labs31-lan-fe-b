@@ -19,21 +19,27 @@ const EditUsers = (props) => {
     <>
       <Header history={props.history} />
       <EditUserContainer>
-        {props.users.map(user => {
+        {props.users.map(user => {//get all users
             return(
+              <>
               <h1>{user.email}</h1>
+              <form>
+              <select>
+              {
+                props.roles.map(role => {//get all roles
+                // <h1>{role.role_name}</h1>
+                return(
+                <option>{role.role_name}</option>
+                )
+              })
+              }
+              </select>
+              </form>
+              </>
             )
         })}
-        <select>
-        {
-          props.roles.map(role => {
-              // <h1>{role.role_name}</h1>
-              return(
-                <option>{role.role_name}</option>
-              )
-          })
-        }
-        </select>
+
+
       </EditUserContainer>
     </>
   );
