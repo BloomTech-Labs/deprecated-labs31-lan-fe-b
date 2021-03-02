@@ -65,7 +65,6 @@ const Header = (props) => {
           >
             Edit Rooms
           </p>
-          <p>Edit Rooms</p>
           <p
             onClick={() => {
               props.history.push('/edit/roles');
