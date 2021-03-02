@@ -22,19 +22,21 @@ const EditUsers = (props) => {
     <>
     {console.log(props.users)}
     {console.log(props.roles)}
+    {console.log(props)}
       <Header history={props.history} />
       <EditUserContainer>
         {props.users.map(user => {
          return <div>
             <h1>{user.display_name}</h1>
             <img src={`${user.profile_picture}`} />
-            <GetMyUsers/>
+            <GetMyUsers props={props}/>
           </div>
         })}
       </EditUserContainer>
     </>
   );
 };
+
 
 const mapStateToProps = (state) => {
   return {

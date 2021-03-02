@@ -5,17 +5,27 @@ import {connect} from 'react-redux';
 
 //purpose is to display a corresponding users role
 // this will take in a user id and then link itself to the role table
-const GetMyUsers = () => {
-   
+const GetMyUsers = (props) => {
+    console.log(props)
+    console.log(props.props.roles.length)
+    const [count,setCount]= useState(0)
+    
     return(
         <form>
             <label>
                 Choose A Role:
                 <select>
-                    <option value ="admin">Admin</option>
-                    <option value ="Moderator">Moderator</option>
-                    <option value ="User">User</option>
-                </select>
+            {props.props.roles.map(role=> {
+                 {setCount(count+1)}
+             return(
+                
+                    <option value ={`${role.id}`} value2 = {`${props.props.roles[count]}`}> {role.role_name}  </option>
+                
+                
+             )
+ 
+            })}
+            </select>
             </label>
             <input type="submit" value="Submit"/>
         </form>
