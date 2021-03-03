@@ -24,11 +24,13 @@ const Questions = (props) => {
     props.fetchUsersLikedPosts();
   }, [room]);
 
+  console.log(props.currentRoom)
   return (
     <>
       <QuestionsContainer>
         <div className="room-title">
           {props.currentRoom && <h2>{props.currentRoom.name}</h2>}
+          {!props.currentRoom.name && <h2>All Posts</h2>}
         </div>
         {props.posts.length > 0 ? (
           props.posts.map((item, index) => <Question key={index} post={item} />)
