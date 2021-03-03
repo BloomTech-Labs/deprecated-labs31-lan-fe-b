@@ -27,16 +27,24 @@ const Rooms = (props) => {
     props.setCurrentRoom(room)
   }
 
+  const handleAll = () => {
+    setQuery(null);
+    props.setCurrentRoom({});
+  }
+
   return (
     <RoomsContainer>
-      <h2>Rooms Component</h2>
+      {/* <h2>Rooms</h2> */}
+      <ul>
+        <li className="room-item" onClick={handleAll}>All Posts</li>
       {props.rooms.length > 0 ? (
         props.rooms.map((item) => {
-          return <p className="room-item" key={item.id} onClick={() => handleClick(item)}>{item.name}</p>;
+          return <li className="room-item" key={item.id} onClick={() => handleClick(item)}>{item.name}</li>;
         })
       ) : (
         <p>No Rooms Loaded</p>
       )}
+      </ul>
     </RoomsContainer>
   );
 };

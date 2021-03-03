@@ -1,31 +1,35 @@
 import React, { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
-import { fetchRecent, fetchUsersLikedPosts, fetchPopularByRoom } from '../../actions';
+import {
+  fetchRecent,
+  fetchUsersLikedPosts,
+  fetchPopularByRoom,
+} from '../../actions';
 import Question from './question';
-import Rooms from './rooms';
+// import Rooms from './rooms';
 import QuestionsContainer from './styles/questionsStyle';
 
 const Questions = (props) => {
   const { search } = useLocation();
   const { room } = queryString.parse(search);
 
-  console.log(search);
   useEffect(() => {
-    if(room) {
-      props.fetchPopularByRoom(room)
+    if (room) {
+      props.fetchPopularByRoom(room);
     } else {
       props.fetchRecent();
     }
     props.fetchUsersLikedPosts();
-    console.log(room);
   }, [room]);
 
   return (
     <>
-      <Rooms />
       <QuestionsContainer>
+        <div className="room-title">
+          {props.currentRoom && <h2>{props.currentRoom.name}</h2>}
+        </div>
         {props.posts.length > 0 ? (
           props.posts.map((item, index) => <Question key={index} post={item} />)
         ) : (
@@ -47,9 +51,12 @@ const mapStateToProps = (state) => {
   return {
     search: state.search,
     posts: state.posts,
+    currentRoom: state.currentRoom,
   };
 };
 
-export default connect(mapStateToProps, { fetchRecent, fetchUsersLikedPosts, fetchPopularByRoom })(
-  Questions
-);
+export default connect(mapStateToProps, {
+  fetchRecent,
+  fetchUsersLikedPosts,
+  fetchPopularByRoom,
+})(Questions);

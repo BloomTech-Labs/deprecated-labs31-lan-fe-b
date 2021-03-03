@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postQuestion, fetchRooms } from '../../actions';
 import Header from '../common/header';
 import CreatePostContainer from './styles/createPostStyle';
 
 const CreatePost = (props) => {
+  const history = useHistory();
   useEffect(() => {
     if(props.rooms.length == 0) {
       props.fetchRooms();
@@ -67,8 +69,11 @@ const CreatePost = (props) => {
           // props.history
         )
         .then((response) => {
-          console.log(response);
-          props.history.push('/');
+          console.log(props.currentRoom.id);
+          const params = new URLSearchParams()
+          params.append("room", props.currentRoom.id)
+          history.push({pathname: '/', search: params.toString()})
+          // props.history.push(`/?room=${props.currentRoom.id}`);
         })
         .catch((error) => {
           console.log(error);
