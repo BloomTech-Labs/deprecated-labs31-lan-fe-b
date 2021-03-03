@@ -59,7 +59,6 @@ const CreatePost = (props) => {
         question: '',
         answer: '',
       });
-      console.log(input);
       props
         .postQuestion(
           input.question,
@@ -69,7 +68,6 @@ const CreatePost = (props) => {
           // props.history
         )
         .then((response) => {
-          console.log(props.currentRoom.id);
           const params = new URLSearchParams()
           params.append("room", props.currentRoom.id)
           history.push({pathname: '/', search: params.toString()})

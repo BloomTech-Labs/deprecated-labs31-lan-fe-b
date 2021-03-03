@@ -247,7 +247,7 @@ export const fetchRooms = () => (dispatch) => {
     .get(`${BACKEND_URL}/api/room`)
     .then((response) => {
       dispatch({ type: 'SET_ROOM', payload: response.data.rooms });
-      console.log('FETCH ROOMS ACTION', response.data.rooms);
+      // console.log('FETCH ROOMS ACTION', response.data.rooms);
     })
     .catch((error) => console.log(error));
 };
