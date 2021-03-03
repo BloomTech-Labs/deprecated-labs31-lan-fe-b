@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { putRole, deleteRole } from '../../actions';
-import binLogo from '../../img/icon-bin1.png';
+import binLogo from '../../img/bx-trash.svg';
 
 const Role = (props) => {
   const [input, setInput] = useState({
@@ -159,6 +159,17 @@ const Role = (props) => {
           <div className="role-title-bar">
             <h3 className={isDisabled && 'disabled'}>{props.role.role_name}</h3>
             <div className="buttons">
+              {editsPending && (
+                <a href="#" className={editSuccess ? "save-button success" : "save-button"} onClick={onSubmit}>
+                  Save
+                </a>
+              )}
+              {!isDisabled && (
+                <a href="#" className="trash-button" onClick={onDelete}>
+                  <img src={binLogo} />
+                </a>
+              )}
+
               {/* {editsPending && (
                 <button
                   type="submit"
@@ -168,27 +179,14 @@ const Role = (props) => {
                   Save
                 </button>
               )} */}
-              <button
-                type="submit"
-                disabled={isDisabled}
-                className={editSuccess ? 'save-button success' : 'save-button'}
-              >
-                Save
-              </button>
-              <button type="button" disabled={isDisabled} className={editSuccess ? 'save-button success' : 'save-button'}>
+              {/* <button type="button" disabled={isDisabled} className={editSuccess ? 'save-button success' : 'save-button'}>
               <img
                 className={isDisabled ? 'bin-logo hide' : 'bin-logo'}
                 src={binLogo}
                 // className={deleteSuccess ? 'edit-role success' : 'edit-role'}
                 onClick={onDelete}
               />
-              </button>
-              {/* <img
-                className={isDisabled ? 'bin-logo hide' : 'bin-logo'}
-                src={binLogo}
-                // className={deleteSuccess ? 'edit-role success' : 'edit-role'}
-                onClick={onDelete}
-              /> */}
+              </button> */}
             </div>
           </div>
           <label htmlFor="name" className={isDisabled && 'disabled'}>

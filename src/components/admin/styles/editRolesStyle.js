@@ -32,8 +32,9 @@ const EditRolesContainer = styled.div`
 
   .role-title-bar {
     display: flex;
-    width: 550px;
+    width: 400px;
     justify-content: space-between;
+    margin-bottom: 0px;
 
     .disabled {
       color: dimgray;
@@ -41,12 +42,32 @@ const EditRolesContainer = styled.div`
 
     .buttons {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       width: 120px;
 
-      .save-button {
+      a {
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #2C2F34;
+        padding: 8px 10px 0;
+        margin-left: 8px;
+        border-radius: 2px;
+        img {
+          fill: #ffffff;
+        }
+        :hover {
+          color: dimgray;
+        }
+      }
+
+      .success {
+        background-color: #13bd5a;
+        color: #2c2f33;
+      }
+
+
+      /* .save-button {
         padding: 10px 24px;
-        /* margin-top: 2rem; */
         background-color: #2c2f33;
         border: none;
         border-radius: 3px;
@@ -71,7 +92,7 @@ const EditRolesContainer = styled.div`
         :hover {
           opacity: 0.5;
         }
-      }
+      } */
 
       .bin-logo {
         width: 20px;
@@ -145,7 +166,7 @@ const EditRolesContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 435px;
 
     .role-name-input {
       width: 92%;
@@ -235,7 +256,7 @@ const EditRolesContainer = styled.div`
     }
 
     label {
-      margin: 16px 0 4px;
+      margin: 5px 0 4px;
       font-size: 1rem;
       font-weight: 500;
       color: #ffffff;
@@ -245,7 +266,7 @@ const EditRolesContainer = styled.div`
       color: dimgray;
     }
 
-    textarea {
+    /* textarea {
       min-height: 44px;
       min-width: 100%;
       max-width: 100%;
@@ -257,12 +278,12 @@ const EditRolesContainer = styled.div`
       font-family: 'Nunito', sans-serif;
       font-size: 1rem;
       font-weight: 500;
-      color: #ffffff;
+      color: #ffffff; */
 
-      ::placeholder {
+      /* ::placeholder {
         color: dimgray;
       }
-    }
+    } */
     .buttons {
       /* display: flex;
       flex-direction: column;
@@ -317,7 +338,7 @@ const EditRolesContainer = styled.div`
       transition: 0.25s;
       cursor: pointer;
       margin-left: 9rem;
-    }
+    } 
   }
 
   .create-role {
