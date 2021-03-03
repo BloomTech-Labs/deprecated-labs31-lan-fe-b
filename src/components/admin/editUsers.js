@@ -4,7 +4,93 @@ import { connect } from 'react-redux';
 import Header from '../common/header';
 import { fetchUsers, fetchRoles,changeUserRole } from '../../actions/index.js';
 import EditUserContainer from './styles/editRolesStyle';
-import axios from 'axios';
+import styled from 'styled-components';
+
+const Div = styled.div`
+  transition: 5s ease-in;
+  *{
+    display:flex;
+    flex-direction:column;
+  }
+  select {
+    width:100px;
+    height:18px
+  }
+  button{
+    width:75px;
+    height:18px
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    margin: 16px auto 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    width: 52%;
+  }
+
+  img {
+    width: 100px;
+    border-radius: 50%;
+    
+  }
+
+
+  form {
+    padding-bottom:75px;
+    margin-bottom:20px;
+    background-color: rgb(44,47,51);
+  }
+
+  input {
+    padding: 10px;
+    background-color: #2c2f33;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+
+    ::placeholder {
+      color: dimgray;
+    }
+  }
+  textarea {
+    min-height: 44px;
+    min-width: 100%;
+    max-width: 100%;
+    height: 288px;
+    padding: 10px;
+    background-color: #2c2f33;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  .submit-button {
+    button {
+      margin-top: 16px;
+      margin-left: 5px;
+      background: linear-gradient(to right, #0084ff, #0099ff);
+      border: none;
+      border-radius: 3px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+      transition: 0.25s;
+
+      :hover {
+        opacity: 0.5;
+      }
+    }
+  }
+`;
 
 
 const EditUsers = (props) => {
@@ -30,13 +116,11 @@ const EditUsers = (props) => {
     setValues(event.target.value)
     setName(event.target.name)
   }
-
+  console.log("This",props)
   return (
     <>
-    {/* {console.log(props.users)}
-    {console.log(props.roles)}
-    {console.log(props)} */}
       <Header history={props.history} />
+      <Div>
       <EditUserContainer>
         {props.users.map(user => {
           console.log("THIS IS",user.id)
@@ -65,6 +149,7 @@ const EditUsers = (props) => {
         })}
         
       </EditUserContainer>
+      </Div>
     </>
   );
 };
