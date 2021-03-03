@@ -9,7 +9,20 @@ const QuestionsContainer = styled.div`
     h2 {
       color: #ffffff;
       margin-bottom: 1rem;
+      font-size: 1.8rem;
     }
+  }
+
+  .room-banner {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+  }
+
+  .room-description {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-top: 2rem;
   }
 
   .no-posts-found {

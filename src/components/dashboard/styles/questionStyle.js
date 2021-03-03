@@ -13,6 +13,8 @@ const QuestionContainer = styled.div`
     border-radius: 3px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
+    margin: 2rem;
+    padding: 1rem;
 
     .left {
       img {
@@ -64,10 +66,11 @@ const QuestionContainer = styled.div`
           border: none;
           border-radius: 3px;
           font-family: 'Nunito', sans-serif;
-          font-size: 0.625rem;
+          font-size: 0.75rem;
           font-weight: 700;
           color: #ffffff;
           cursor: pointer;
+          font-weight: bold;
         }
 
         .career-coach {
@@ -77,8 +80,8 @@ const QuestionContainer = styled.div`
       }
 
       .question {
-        margin-bottom: 4px;
-        font-size: 1rem;
+        margin-bottom: .6rem;
+        font-size: 1.2rem;
         font-weight: 600;
         color: #ffffff;
         display: -webkit-box;
@@ -89,12 +92,13 @@ const QuestionContainer = styled.div`
 
       .answer {
         margin-bottom: 8px;
-        font-size: 0.875rem;
+        font-size: 1rem;
         font-weight: 500;
         color: #ffffff;
       }
 
       .activity {
+        margin-top: 1rem;
         display: flex;
         align-items: center;
 
