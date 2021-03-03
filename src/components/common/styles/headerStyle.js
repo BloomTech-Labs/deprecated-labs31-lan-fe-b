@@ -53,6 +53,9 @@ const HeaderContainer = styled.div`
         color: dimgray;
       }
     }
+    .admin {
+        cursor: pointer;
+    }
 
     button {
       padding: 10px;
@@ -145,9 +148,10 @@ const HeaderContainer = styled.div`
       }
     }
 
-     {
-      right: 2.5%;
-    }
+        {
+            right: 2.5%;
+        }
+
   }
 `;
 

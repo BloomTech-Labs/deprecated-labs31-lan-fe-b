@@ -16,8 +16,6 @@ const Filter = (props) => {
     }
   };
 
-  // console.log(props.currentRoom.name);
-
   return (
     <FilterContainer>
       <div className="filters">

@@ -237,16 +237,68 @@ export const fetchRoles = () => (dispatch) => {
 };
 
 
-// Rooms
-
-export const fetchRooms = () => (dispatch) => {
-  axios
-    .get(`${BACKEND_URL}/api/room`)
-    .then((response) => dispatch({ type: 'SET_ROOMS', payload: response.data }))
-    .catch((error) => console.log(error));
-};
-
 // Current Room
 export const setCurrentRoom = (room) => (dispatch) => {
   dispatch({ type: 'SET_CURRENT_ROOM', payload: room });
 }
+
+export const fetchRooms = () => (dispatch) => {
+  axios
+    .get(`${BACKEND_URL}/api/room`)
+    .then((response) => {
+      dispatch({ type: 'SET_ROOM', payload: response.data.rooms });
+      console.log('FETCH ROOMS ACTION', response.data.rooms);
+    })
+    .catch((error) => console.log(error));
+};
+
+export const addRoom = (name, icon, banner_image, description) => (
+  dispatch
+) => {
+  return axios
+    .post(`${BACKEND_URL}/api/room`, {
+      name: name,
+      icon: icon,
+      banner_image: banner_image,
+      description: description,
+    })
+    .then((response) => {
+      console.log(response);
+      dispatch({ type: 'ADD_ROOM', payload: response.data.room });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const updateRoom = (id, name, icon, banner_image, description) => (
+  dispatch
+) => {
+  return axios
+    .put(`${BACKEND_URL}/api/room/${id}`, {
+      name: name,
+      icon: icon,
+      banner_image: banner_image,
+      description: description,
+    })
+    .then((response) => {
+      console.log(response.data.room);
+      dispatch({ type: 'UPDATE_ROOM', payload: response.data.room });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const deleteRoom = (id) => (dispatch) => {
+  return axios
+    .delete(`${BACKEND_URL}/api/room/${id}`)
+    .then((response) => {
+      console.log(response.data);
+      dispatch({ type: 'DELETE_ROOM', payload: id });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+

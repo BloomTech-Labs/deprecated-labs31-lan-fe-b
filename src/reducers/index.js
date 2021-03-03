@@ -92,18 +92,45 @@ export const reducer = (state = initialState, action) => {
     case 'SET_ROLES':
       return {
         ...state,
-        roles: action.payload.roles,
+        roles: action.payload,
       };
-    case 'SET_ROOMS':
+
+    case 'SET_ROOM':
       return {
         ...state,
-        rooms: action.payload.rooms,
-      }
+        rooms: action.payload,
+      };
+
+    case 'ADD_ROOM':
+      return {
+        ...state,
+        rooms: [...state.rooms, action.payload],
+      };
+
+    case 'UPDATE_ROOM':
+      return {
+        ...state,
+        rooms: state.rooms.map((item) => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return item;
+          }
+        }),
+      };
+
+    case 'DELETE_ROOM':
+      return {
+        ...state,
+        rooms: state.rooms.filter((item) => item.id != action.payload),
+      };
+
     case 'SET_CURRENT_ROOM':
       return {
         ...state,
         currentRoom: action.payload
       }
+
     default:
       return state;
   }
