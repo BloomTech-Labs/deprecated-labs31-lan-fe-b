@@ -231,6 +231,14 @@ export const putRole = (role, role_id) => (dispatch) => {
   // console.log(`role: ${role.name}, role_id: ${role_id}`)
   return axios.put(`${BACKEND_URL}/api/roles/${role_id}`, role);
 };
+export const changeUserRole = (role_id,user_id) => (dispatch) => {
+  return axios.put(`http://localhost:5000/api/user/${user_id}`,role_id)
+  .then(res => {
+    console.log("res: ", res.data)
+  })
+  .catch(err => console.log("err.response: ", err.response))
+}
+
 
 export const fetchRoles = () => (dispatch) => {
   axios

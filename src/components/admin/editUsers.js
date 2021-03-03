@@ -2,10 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Header from '../common/header';
-import { fetchUsers, fetchRoles } from '../../actions/index.js';
+import { fetchUsers, fetchRoles,changeUserRole } from '../../actions/index.js';
 import EditUserContainer from './styles/editRolesStyle';
 import axios from 'axios';
-import GetMyUsers from './getCreateUserRoom';
 
 
 const EditUsers = (props) => {
@@ -22,12 +21,7 @@ const EditUsers = (props) => {
   const onSubmit = (event) => {
     event.preventDefault();
     console.log("event.target.value,name: ",values,name)
-    axios
-      .put(`http://localhost:5000/api/user/${values}`,name)
-      .then(res => {
-        console.log("res: ", res.data)
-      })
-      .catch(err => console.log("err.response: ", err.response))
+    props.changeUserRole(values,name)
   }
 
   const handleChanges = (event) => {
@@ -39,9 +33,9 @@ const EditUsers = (props) => {
 
   return (
     <>
-    {console.log(props.users)}
+    {/* {console.log(props.users)}
     {console.log(props.roles)}
-    {console.log(props)}
+    {console.log(props)} */}
       <Header history={props.history} />
       <EditUserContainer>
         {props.users.map(user => {
@@ -83,4 +77,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchUsers,fetchRoles })(EditUsers);
+export default connect(mapStateToProps, { fetchUsers,fetchRoles,changeUserRole })(EditUsers);
