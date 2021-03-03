@@ -10,21 +10,23 @@ const Rooms = (props) => {
 
   useEffect(() => {
     props.fetchRooms();
+    if (localStorage.getItem("currentRoom")) {
+      props.setCurrentRoom(JSON.parse(localStorage.getItem("currentRoom")))
+    }
   }, []);
 
   useEffect(() => {
     const params = new URLSearchParams()
     if (query) {
       params.append("room", query)
-    } else {
-      params.delete("room")
-    }
-    history.push({search: params.toString()})
+      history.push({search: params.toString()})
+    } 
   }, [query, history])
 
   const handleClick = (room) => {
     setQuery(room.id)
     props.setCurrentRoom(room)
+    localStorage.setItem("currentRoom", JSON.stringify(room))
   }
 
   const handleAll = () => {
