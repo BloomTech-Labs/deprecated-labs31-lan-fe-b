@@ -36,6 +36,10 @@ const Div = styled.div`
     
   }
 
+  toggle.off{
+    color:red;
+  }
+
 
   form {
     padding-bottom:75px;
@@ -97,6 +101,8 @@ const EditUsers = (props) => {
   const [successCount, setSuccessCount]= useState('')
   const [values,setValues] = useState('')
   const [name,setName] = useState('')
+  const [currUser,setCurrUser] = useState('')
+  const [textZ,settextZ] = useState("")
   useEffect(() => {
     props.fetchUsers();
   },[]);
@@ -106,24 +112,28 @@ const EditUsers = (props) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("event.target.value,name: ",values,name)
+    console.log("role id",values)
+    console.log("userid",name)
+    settextZ(`Successfully changed User ${name} to ${props.roles[values-1].role_name}`)
     props.changeUserRole(values,name)
   }
 
   const handleChanges = (event) => {
     event.preventDefault();
-    console.log("MY EVENTS",event.target,event.target.name)
+    console.log("role id",event.target.value)
+    console.log("userid",event.target.name)
     setValues(event.target.value)
     setName(event.target.name)
   }
-  console.log("This",props)
+ // console.log("This",props)
   return (
     <>
       <Header history={props.history} />
+      <p toggle={false}> {textZ}</p>
       <Div>
       <EditUserContainer>
         {props.users.map(user => {
-          console.log("THIS IS",user.id)
+          //console.log("THIS IS",user.id)
          return (<div id={user.id}>
             <h1>{user.display_name}</h1>
             <img src={`${user.profile_picture}`} />
@@ -131,6 +141,7 @@ const EditUsers = (props) => {
                       <label>
                         Choose A role:
                         <select name={user.id} onChange={handleChanges}>
+                          <option></option>
                           {props.roles.map(roles=>{
                             return(
                             <option value={roles.id} name={user.id}>{roles.role_name}</option>
@@ -138,12 +149,11 @@ const EditUsers = (props) => {
                           })}
                         </select>
                       </label> 
-
                        <button type="submit">
                     Submit
                     </button>   
                       </form> 
-            
+
           </div>
           )
         })}

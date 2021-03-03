@@ -231,8 +231,8 @@ export const putRole = (role, role_id) => (dispatch) => {
   // console.log(`role: ${role.name}, role_id: ${role_id}`)
   return axios.put(`${BACKEND_URL}/api/roles/${role_id}`, role);
 };
-export const changeUserRole = (role_id,user_id) => (dispatch) => {
-  return axios.put(`http://localhost:5000/api/user/${user_id}`,role_id)
+export const changeUserRole = (role_i,user_id) => (dispatch) => {
+  return axios.put(`http://localhost:5000/api/user/${user_id}`,{role_id:role_i})
   .then(res => {
     console.log("res: ", res.data)
   })
