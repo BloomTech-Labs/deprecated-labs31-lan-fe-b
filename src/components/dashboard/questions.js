@@ -1,31 +1,49 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import { connect } from 'react-redux';
-import { fetchRecent, fetchUsersLikedPosts } from '../../actions';
+import {
+  fetchRecent,
+  fetchUsersLikedPosts,
+  fetchPopularByRoom,
+} from '../../actions';
 import Question from './question';
+// import Rooms from './rooms';
 import QuestionsContainer from './styles/questionsStyle';
 
 const Questions = (props) => {
+  const { search } = useLocation();
+  const { room } = queryString.parse(search);
+
   useEffect(() => {
-    // ? Default search query passed in
-    props.fetchRecent();
+    if (room) {
+      props.fetchPopularByRoom(room);
+    } else {
+      props.fetchRecent();
+    }
     props.fetchUsersLikedPosts();
-  }, []);
+  }, [room]);
 
   return (
-    <QuestionsContainer>
-      {props.posts.length > 0 ? (
-        props.posts.map((item, index) => <Question key={index} post={item} />)
-      ) : (
-        <div className="no-posts-found">
-          <p>
-            <i className="fas fa-exclamation"></i>No posts found
-          </p>
+    <>
+      <QuestionsContainer>
+        <div className="room-title">
+          {props.currentRoom && <h2>{props.currentRoom.name}</h2>}
         </div>
-      )}
-      {props.posts.length > 0 && (
-        <p className="youve-reached-the-end">You've reached the end!</p>
-      )}
-    </QuestionsContainer>
+        {props.posts.length > 0 ? (
+          props.posts.map((item, index) => <Question key={index} post={item} />)
+        ) : (
+          <div className="no-posts-found">
+            <p>
+              <i className="fas fa-exclamation"></i>No posts found
+            </p>
+          </div>
+        )}
+        {props.posts.length > 0 && (
+          <p className="youve-reached-the-end">You've reached the end!</p>
+        )}
+      </QuestionsContainer>
+    </>
   );
 };
 
@@ -33,9 +51,12 @@ const mapStateToProps = (state) => {
   return {
     search: state.search,
     posts: state.posts,
+    currentRoom: state.currentRoom,
   };
 };
 
-export default connect(mapStateToProps, { fetchRecent, fetchUsersLikedPosts })(
-  Questions
-);
+export default connect(mapStateToProps, {
+  fetchRecent,
+  fetchUsersLikedPosts,
+  fetchPopularByRoom,
+})(Questions);

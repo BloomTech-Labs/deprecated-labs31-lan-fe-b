@@ -51,14 +51,13 @@ export const setTrack = (track, token) => (dispatch) => {
 };
 
 // Post
-export const postQuestion = (question, answer, track, category, history) => (
+export const postQuestion = (question, answer, room_id, history) => (
   dispatch
 ) => {
   return axios.post(`${BACKEND_URL}/api/post/create`, {
     question: question,
     answer: answer,
-    track: track,
-    category: category,
+    room_id: room_id
   });
 };
 
@@ -87,6 +86,15 @@ export const fetchPopular = () => (dispatch) => {
     .then((response) => dispatch({ type: 'SET_POSTS', payload: response.data }))
     .catch((error) => console.log(error));
 };
+
+export const fetchPopularByRoom = (room_id) => (dispatch) => {
+  axios
+    .post(`${BACKEND_URL}/api/post/search`, { room_id: room_id }, { params: {
+      orderBy: "popular"
+    }})
+    .then((response) => dispatch({ type: 'SET_POSTS', payload: response.data }))
+    .catch((error) => console.log(error));
+}
 
 export const fetchPost = (postID) => (dispatch) => {
   dispatch({ type: 'START_FETCHING_CURRENT_POST' });
@@ -224,17 +232,22 @@ export const putRole = (role, role_id) => (dispatch) => {
 export const fetchRoles = () => (dispatch) => {
   axios
     .get(`${BACKEND_URL}/api/roles`, {withCredentials: true})
-    .then((response) => dispatch({ type: 'SET_ROLES', payload: response.data }))
+    .then((response) => dispatch({ type: 'SET_ROLES', payload: response.data.roles }))
     .catch((error) => console.log(error));
 };
 
+
+// Current Room
+export const setCurrentRoom = (room) => (dispatch) => {
+  dispatch({ type: 'SET_CURRENT_ROOM', payload: room });
+}
 
 export const fetchRooms = () => (dispatch) => {
   axios
     .get(`${BACKEND_URL}/api/room`)
     .then((response) => {
       dispatch({ type: 'SET_ROOM', payload: response.data.rooms });
-      console.log('FETCH ROOMS ACTION', response.data.rooms);
+      // console.log('FETCH ROOMS ACTION', response.data.rooms);
     })
     .catch((error) => console.log(error));
 };
@@ -288,3 +301,4 @@ export const deleteRoom = (id) => (dispatch) => {
       console.log(error);
     });
 };
+

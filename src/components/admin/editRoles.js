@@ -13,6 +13,9 @@ const EditRoles = (props) => {
     props.fetchRoles();
   }, [successCount]);
 
+
+  // console.log(props.roles.roles)
+
   return (
     <>
       <Header history={props.history} />
