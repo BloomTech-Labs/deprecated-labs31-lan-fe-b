@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { fetchRooms } from '../../actions/index';
 import Header from '../common/header';
 import CreateRooms from './createRooms';
+import { Rooms } from './Rooms';
+import { updateRoom, deleteRoom } from '../../actions/index';
 
-const editRooms = (props) => {
+const EditRooms = (props) => {
+  useEffect(() => {
+    props.fetchRooms();
+  }, []);
   return (
     <>
       <Header history={props.history} />
-      <h1>Edit Rooms</h1>
       <CreateRooms />
-      {props.state.rooms.map((item) => (
-        <div>
-          <li>{item.room}</li>
-        </div>
+      {props.rooms.map((item) => (
+        <Rooms
+          item={item}
+          update={props.updateRoom}
+          delete={props.deleteRoom}
+          key={item.id}
+        />
       ))}
     </>
   );
@@ -20,8 +28,10 @@ const editRooms = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    state,
+    rooms: state.rooms,
   };
 };
 
-export default connect(mapStateToProps, {})(editRooms);
+export default connect(mapStateToProps, { fetchRooms, updateRoom, deleteRoom })(
+  EditRooms
+);

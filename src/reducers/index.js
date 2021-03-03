@@ -12,8 +12,13 @@ const initialState = {
   usersLikedComments: [],
   individualPostIsFetching: false,
   individualPostCommentsAreFetching: false,
+<<<<<<< HEAD
   rooms: [{ room: 'Lambda Staff' }],
   roles: []
+=======
+  roles: [],
+  rooms: [],
+>>>>>>> 5bcfa35ba64b7b0c5936c25e45fb74bded9c5b02
 };
 
 export const reducer = (state = initialState, action) => {
@@ -89,6 +94,7 @@ export const reducer = (state = initialState, action) => {
         individualPostCommentsAreFetching: false,
       };
 
+<<<<<<< HEAD
       case 'SET_USERS':
         return {
           ...state,
@@ -100,8 +106,49 @@ export const reducer = (state = initialState, action) => {
               roles: action.payload.roles
           }
       
+=======
+    case 'SET_ROLES':
+      return {
+        ...state,
+        roles: action.payload,
+      };
+
+    case 'SET_ROOM':
+      return {
+        ...state,
+        rooms: action.payload,
+      };
+
+    case 'ADD_ROOM':
+      return {
+        ...state,
+        rooms: [...state.rooms, action.payload],
+      };
+
+    case 'UPDATE_ROOM':
+      return {
+        ...state,
+        rooms: state.rooms.map((item) => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return item;
+          }
+        }),
+      };
+
+    case 'DELETE_ROOM':
+      return {
+        ...state,
+        rooms: state.rooms.filter((item) => item.id != action.payload),
+      };
+>>>>>>> 5bcfa35ba64b7b0c5936c25e45fb74bded9c5b02
 
     default:
       return state;
   }
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 5bcfa35ba64b7b0c5936c25e45fb74bded9c5b02
