@@ -56,7 +56,6 @@ export const reducer = (state = initialState, action) => {
       };
 
     case 'SET_POSTS_COMMENTS':
-      console.log(action.payload)
       return {
         ...state,
         currentPostComments: [...state.currentPostComments, action.payload]
