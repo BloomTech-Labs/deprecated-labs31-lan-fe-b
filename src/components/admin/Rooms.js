@@ -160,6 +160,7 @@ export const Rooms = (props) => {
       input.banner_image,
       input.description
     );
+    setUpdateForm(false);
   };
 
   const deleteRoom = (e) => {
