@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../common/header';
 import CreateRole from './createRole';
 import Role from './role.js';
-import { fetchRoles } from '../../actions';
+import { fetchRoles } from '../../actions/index.js';
 import EditRolesContainer from './styles/editRolesStyle';
 
 const EditRoles = (props) => {

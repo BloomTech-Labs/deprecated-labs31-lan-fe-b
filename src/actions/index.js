@@ -35,6 +35,17 @@ export const fetchUser = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
+
+//fetch users
+export const fetchUsers = () => (dispatch) => {
+  axios.get(`${BACKEND_URL}/api/user/all`)
+    .then((response)=> {
+      console.log("response: ", response.data)
+      dispatch({ type: 'SET_USERS', payload: response.data });
+    })
+    .catch((error)=> console.log(error));
+}
+
 export const logOut = (history) => (dispatch) => {
   axios
     .get(`${BACKEND_URL}/api/auth/logout`)
@@ -228,6 +239,14 @@ export const putRole = (role, role_id) => (dispatch) => {
   // console.log(`role: ${role.name}, role_id: ${role_id}`)
   return axios.put(`${BACKEND_URL}/api/roles/${role_id}`, role);
 };
+export const changeUserRole = (role_i,user_id) => (dispatch) => {
+  return axios.put(`http://localhost:5000/api/user/${user_id}`,{role_id:role_i})
+  .then(res => {
+    console.log("res: ", res.data)
+  })
+  .catch(err => console.log("err.response: ", err.response))
+}
+
 
 export const fetchRoles = () => (dispatch) => {
   axios
