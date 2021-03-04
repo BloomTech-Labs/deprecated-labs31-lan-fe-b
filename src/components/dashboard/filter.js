@@ -26,14 +26,22 @@ const Filter = (props) => {
         </select>
       </div>
 
-      <button
-        className="post-a-question"
-        onClick={() => props.history.push('/post')}
-      >
-        <i className="fas fa-plus"></i>Post a question
-      </button>
+      {props.currentRoom.name && (
+        <button
+          className="post-a-question"
+          onClick={() => props.history.push('/post')}
+        >
+          <i className="fas fa-plus"></i>Post a question
+        </button>
+      )}
     </FilterContainer>
   );
 };
 
-export default connect(null, { fetchRecent, fetchPopular })(Filter);
+const mapStateToProps = (state) => {
+  return {
+    currentRoom: state.currentRoom,
+  };
+};
+
+export default connect(mapStateToProps, { fetchRecent, fetchPopular })(Filter);

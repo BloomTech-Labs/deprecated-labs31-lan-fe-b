@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 
 const QuestionsContainer = styled.div`
-  width: 90%;
+  width: 400px;
   margin: 0 auto;
   margin-bottom: 64px;
+
+  .room-title {
+    h2 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+  }
 
   .no-posts-found {
     display: flex;
@@ -33,11 +40,11 @@ const QuestionsContainer = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: 95%;
+    width: 70%;
   }
 
   @media (min-width: 1024px) {
-    width: 972.8px;
+    width: 900px;
   }
 `;
 

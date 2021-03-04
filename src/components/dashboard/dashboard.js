@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Header from '../common/header';
 import Filter from './filter';
+import Rooms from './rooms';
 import Questions from './questions';
 import styled from 'styled-components';
 import lambdaschool from '../../img/lambdaschool.png';
@@ -10,6 +11,10 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const notify = () =>
   toast.error('Lambda track not set. We recommend setting one now.');
+
+const DashboardBodyContainer = styled.div`
+  display: flex;
+`;
 
 const ModalContainer = styled.div`
   transition: 0.25s;
@@ -125,7 +130,10 @@ const Dashboard = (props) => {
     <>
       <Header history={props.history} />
       <Filter history={props.history} />
-      <Questions history={props.history} />
+      <DashboardBodyContainer>
+        <Rooms history={props.history} />
+        <Questions history={props.history} />
+      </DashboardBodyContainer>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -289,7 +297,7 @@ const Dashboard = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log('???????', state);
+  // console.log('???????', state);
   return {
     chess: state.user,
   };
