@@ -10,7 +10,6 @@ const EditRolesContainer = styled.div`
   h2 {
     padding-bottom: 8px;
     margin-bottom: 8px;
-    border-bottom: 1px solid #2c2f33;
     font-size: 1.25rem;
     font-weight: 700;
     color: #ffffff;
@@ -21,9 +20,55 @@ const EditRolesContainer = styled.div`
     color: #ffffff;
   }
 
-  /* * {
-    border: 1px solid blue;
-  } */
+  .roles-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      width: 433px;
+    }
+  }
+  .line {
+    width: 90%;
+    text-align: center;
+    margin: 0 auto 1rem;
+    border-bottom: 1px solid #2c2f33;
+    
+  }
+
+  .buttons-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .create-role-button {
+    padding: 10px 24px;
+    margin-top: 0.4rem;
+    margin-bottom: 2rem;
+    margin-right: 18.7rem;
+    background: linear-gradient(to right, #0084ff, #0099ff);
+    border: none;
+    border-radius: 3px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.25s;
+
+    i {
+      margin-right: 4px;
+      font-size: 0.75rem;
+    }
+
+    :hover {
+      opacity: 0.7;
+    }
+  }
+  .toggled {
+    opacity: 0.5;
+  }
+  }
   .roles {
     display: flex;
     flex-direction: column;
@@ -48,13 +93,12 @@ const EditRolesContainer = styled.div`
       a {
         text-decoration: none;
         color: #ffffff;
+        font-size: 1.1rem;
         background-color: #2C2F34;
-        padding: 8px 10px 0;
+        padding: 8px 10px 2px;
         margin-left: 8px;
         border-radius: 2px;
-        img {
-          fill: #ffffff;
-        }
+
         :hover {
           color: dimgray;
         }
@@ -64,35 +108,6 @@ const EditRolesContainer = styled.div`
         background-color: #13bd5a;
         color: #2c2f33;
       }
-
-
-      /* .save-button {
-        padding: 10px 24px;
-        background-color: #2c2f33;
-        border: none;
-        border-radius: 3px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-          0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        font-family: 'Nunito', sans-serif;
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: #ffffff;
-        transition: 0.25s;
-        cursor: pointer;
-
-        i {
-          margin-right: 4px;
-          font-size: 0.625rem;
-        }
-
-        :disabled {
-          color: gray;
-        }
-
-        :hover {
-          opacity: 0.5;
-        }
-      } */
 
       .bin-logo {
         width: 20px;
@@ -115,54 +130,7 @@ const EditRolesContainer = styled.div`
     margin-bottom: 3rem;
   }
 
-  .edit-active-button {
-    padding: 10px 24px;
-    margin-left: 8px;
-    background: linear-gradient(to right, #0084ff, #0099ff);
-    border: none;
-    border-radius: 3px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #ffffff;
-    cursor: pointer;
-    transition: 0.25s;
-
-    i {
-      margin-right: 4px;
-      font-size: 0.75rem;
-    }
-
-    :hover {
-      opacity: 0.5;
-    }
-  }
-  .create-role-button {
-    padding: 10px 24px;
-    margin-top: 0.4rem;
-    margin-bottom: 2rem;
-    background: linear-gradient(to right, #0084ff, #0099ff);
-    border: none;
-    border-radius: 3px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #ffffff;
-    cursor: pointer;
-    transition: 0.25s;
-
-    i {
-      margin-right: 4px;
-      font-size: 0.75rem;
-    }
-
-    :hover {
-      opacity: 0.7;
-    }
-  }
-  .toggled {
-    opacity: 0.5;
-  }
+  
   form {
     display: flex;
     flex-direction: column;
@@ -179,11 +147,7 @@ const EditRolesContainer = styled.div`
       }
 
       input[type='checkbox'] {
-        /* transform: scale(1); */
         margin-right: 0.4rem;
-        /* margin-top: 1rem; */
-        /* vertical-align: baseline; */
-        /* vertical-align: middle; */
         border: 1px solid white;
       }
 
@@ -266,33 +230,10 @@ const EditRolesContainer = styled.div`
       color: dimgray;
     }
 
-    /* textarea {
-      min-height: 44px;
-      min-width: 100%;
-      max-width: 100%;
-      height: 288px;
-      padding: 10px;
-      background-color: #2c2f33;
-      border: none;
-      border-radius: 3px;
-      font-family: 'Nunito', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #ffffff; */
-
-      /* ::placeholder {
-        color: dimgray;
-      }
-    } */
     .buttons {
-      /* display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      margin-left: 1rem; */
 
       .edit-role {
         padding: 10px 24px;
-        /* margin-top: 2rem; */
         background-color: #2c2f33;
         border: none;
         border-radius: 3px;

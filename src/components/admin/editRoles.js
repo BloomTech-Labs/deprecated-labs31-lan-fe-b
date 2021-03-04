@@ -17,8 +17,11 @@ const EditRoles = (props) => {
     <>
       <Header history={props.history} />
       <EditRolesContainer>
-        <h2>Manage User Roles</h2>
-        <div className="buttons">
+        <div className="roles-head">
+          <h2>Manage User Roles</h2>
+        </div>
+        <div className="line"></div>
+        <div className="buttons-head">
           <button
             className={
               toggleCreate ? 'create-role-button toggled' : 'create-role-button'
