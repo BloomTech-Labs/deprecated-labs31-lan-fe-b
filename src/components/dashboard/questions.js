@@ -23,12 +23,18 @@ const Questions = (props) => {
     }
     props.fetchUsersLikedPosts();
   }, [room]);
-
+ 
+  console.log(props.currentRoom)
   return (
     <>
       <QuestionsContainer>
+        {props.currentRoom.banner_image && <img className="room-banner" src={props.currentRoom.banner_image}/>}
         <div className="room-title">
           {props.currentRoom && <h2>{props.currentRoom.name}</h2>}
+          {!props.currentRoom.name && <h2>All Posts</h2>}
+        </div>
+        <div className="room-description">
+          <p>{props.currentRoom.description}</p>
         </div>
         {props.posts.length > 0 ? (
           props.posts.map((item, index) => <Question key={index} post={item} />)
