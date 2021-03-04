@@ -8,8 +8,21 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  .logo {
+  .header-icons {
     display: flex;
+    padding-top: 10px;
+  }
+
+  .admin-logo {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-left: 5px;
+    :hover {
+      color: dimgray;
+    }
+  }
+
+  .logo {
     align-items: center;
     cursor: pointer;
     transition: 0.25s;

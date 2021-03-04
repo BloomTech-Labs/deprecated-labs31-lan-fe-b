@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUser, logOut, setSearch, fetchSearch } from '../../actions';
 import HeaderContainer from './styles/headerStyle';
 import lambdaschool from '../../img/lambdaschool.png';
+import { BiCabinet } from 'react-icons/bi';
 
 const Header = (props) => {
   const [hamburgerMenu, setHamburgerMenu] = useState(false);
@@ -52,8 +53,11 @@ const Header = (props) => {
           <i className="fas fa-search"></i>
         </button>
       </form>
+      <div className="header-icons">
       <h3 className="admin" onClick={() => setAdminMenu(!adminMenu)}>
-        Admin
+        <div className="admin-logo">
+          <BiCabinet />
+        </div>
       </h3>
       {adminMenu && (
         <div className="dropdown">
@@ -105,7 +109,9 @@ const Header = (props) => {
             <i className="fas fa-sign-out-alt"></i>Log Out
           </p>
         </div>
+        
       )}
+      </div>
     </HeaderContainer>
   );
 };
