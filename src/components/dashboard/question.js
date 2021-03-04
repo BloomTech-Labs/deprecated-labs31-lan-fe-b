@@ -35,30 +35,37 @@ const Question = (props) => {
     <QuestionContainer post={props.post}>
       <Link to={`/post/${props.post.id}`}>
         <div className="question-card">
-          <div className="left">
+          {/* <div className="left">
             <Link to={`/user/${props.post.user_id}`}>
               <img src={props.post.profile_picture} alt="profile icon" />
             </Link>
-          </div>
+          </div> */}
           <div className="right">
-            <div className="display-name-and-timestamp">
-              <Link to={`/user/${props.post.user_id}`}>
-                <p className="display-name">{props.post.display_name}</p>
-              </Link>
-              <p className="timestamp">
-                {moment(props.post.created_at).fromNow()}
-              </p>
+            <div class="post-header">
+              <p className="question">{props.post.question}</p>
+              <div class="meta-data">
+                <Link to={`/user/${props.post.user_id}`}>
+                  <img src={props.post.profile_picture} alt="profile icon" />
+                </Link>
+                <div className="display-name-and-timestamp">
+                  <Link to={`/user/${props.post.user_id}`}>
+                    <p className="display-name">{props.post.display_name}</p>
+                  </Link>
+                  <p className="timestamp">
+                    {moment(props.post.created_at).fromNow()}
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="labels">
               {props.post.track === 'Career Coach' && (
                 <button className="career-coach">CAREER COACH</button>
               )}
-              {props.post.track && props.post.track !== 'Career Coach' && (
+              {/* {props.post.track && props.post.track !== 'Career Coach' && (
                 <button>{props.post.track.toUpperCase()}</button>
-              )}
+              )} */}
               {/* <button>{props.post.category.toUpperCase()}</button> */}
             </div>
-            <p className="question">{props.post.question}</p>
             <p className="answer">{props.post.answer}</p>
             <div className="activity">
               <p>

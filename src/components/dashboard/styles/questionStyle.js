@@ -16,7 +16,18 @@ const QuestionContainer = styled.div`
     margin: 2rem;
     padding: 1rem;
 
-    .left {
+    .post-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+      .question {
+        margin-right: 1rem;
+      }
+      .meta-data {
+        min-width: 250px;
+        display: flex;
+      }
       img {
         margin-right: 12px;
         height: 32px;
@@ -31,6 +42,7 @@ const QuestionContainer = styled.div`
     }
 
     .right {
+      width: 100%;
       .display-name-and-timestamp {
         margin-bottom: 4px;
         display: flex;
@@ -81,7 +93,7 @@ const QuestionContainer = styled.div`
 
       .question {
         margin-bottom: .6rem;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: 600;
         color: #ffffff;
         display: -webkit-box;
