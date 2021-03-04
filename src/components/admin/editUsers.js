@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Header from '../common/header';
 import { fetchUsers, fetchRoles,changeUserRole } from '../../actions/index.js';
-import EditUserContainer from './styles/editRolesStyle';
+import EditUserContainer from './styles/editUserStyle';
 import styled from 'styled-components';
 
 const Div = styled.div`
@@ -112,16 +112,16 @@ const EditUsers = (props) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("role id",values)
-    console.log("userid",name)
+    // console.log("role id",values)
+    // console.log("userid",name)
     settextZ(`Successfully changed User ${name} to ${props.roles[values-1].role_name}`)
     props.changeUserRole(values,name)
   }
 
   const handleChanges = (event) => {
     event.preventDefault();
-    console.log("role id",event.target.value)
-    console.log("userid",event.target.name)
+    // console.log("role id",event.target.value)
+    // console.log("userid",event.target.name)
     setValues(event.target.value)
     setName(event.target.name)
   }
@@ -142,7 +142,7 @@ const EditUsers = (props) => {
                         Choose A role:
                         <select name={user.id} onChange={handleChanges}>
                           <option></option>
-                          {props.roles.map(roles=>{
+                          {props.roles.roles.map(roles=>{
                             return(
                             <option value={roles.id} name={user.id}>{roles.role_name}</option>
                             )
