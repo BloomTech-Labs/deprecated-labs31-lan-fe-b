@@ -110,9 +110,9 @@ const CreateRooms = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (input.role === '') {
+    if (input.name === '') {
       setError({
-        checkbox: 'Please input a role',
+        checkbox: 'Please input a name',
         name: '',
         icon: '',
         banner_image: '',
