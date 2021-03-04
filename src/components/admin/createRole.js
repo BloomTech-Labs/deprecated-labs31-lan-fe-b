@@ -18,7 +18,8 @@ const initRole = {
 
 const CreateRole = (props) => {
   const [input, setInput] = useState(initRole);
-  const [success, setSuccess] = useState(false);
+  const [postSuccess, setPostSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const [error, setError] = useState({
     name: '',
     server: '',
@@ -50,6 +51,12 @@ const CreateRole = (props) => {
     });
   };
 
+  const initializeAll = () => {
+    initializeInput();
+    setSuccessMessage('');
+    setPostSuccess(false);
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
     if (input.name === '') {
@@ -57,6 +64,7 @@ const CreateRole = (props) => {
         name: 'Please enter a role name',
         server: '',
       });
+      setSuccessMessage('');
     } else {
       setError({
         name: '',
@@ -66,8 +74,13 @@ const CreateRole = (props) => {
         .postRole(input)
         .then((response) => {
           console.log(response);
+          setSuccessMessage(
+            `Role "${input.name}" has been successfully created.`
+          );
           initializeInput();
-          props.setSuccessCount(props.successCount + 1)
+          // trigger fetchRoles
+          props.setSuccessCount(props.successCount + 1);
+          setPostSuccess(true);
         })
         .catch((error) => {
           console.log(error);
@@ -79,8 +92,13 @@ const CreateRole = (props) => {
     }
   };
 
+  const clearPostSuccess = () => {
+    setPostSuccess(false);
+    setSuccessMessage('');
+  }
+
   return (
-    <>
+    <div className="create-role">
       <h3>Create A Role</h3>
       <form autoComplete="off" spellCheck="false" onSubmit={onSubmit}>
         <label>Name</label>
@@ -172,16 +190,29 @@ const CreateRole = (props) => {
           </div>
         </div>
         <div className="buttons">
-          <button type="button" onClick={initializeInput} className="edit-role-submit">
-            Reset
-          </button>
-          <button type="submit" className="edit-role-submit">
+          <button
+            type="submit"
+            className={postSuccess ? 'edit-role success' : 'edit-role'}
+          >
             Submit
           </button>
+          <button type="button" onClick={initializeAll} className="edit-role">
+            Reset
+          </button>
         </div>
-        {error.server && <p className="error">{error.server}</p>}
+        <div className="messages">
+          {error.server && <p className="error">{error.server}</p>}
+          {successMessage && (
+            <p className="success-message">{successMessage}</p>
+          )}
+          {postSuccess && (
+            <button className="ok-button" onClick={clearPostSuccess}>
+              OK
+            </button>
+          )}
+        </div>
       </form>
-    </>
+    </div>
   );
 };
 
